@@ -10,6 +10,7 @@ import bit.minisys.minicc.assembler.MiniCCAssembler;
 import bit.minisys.minicc.codegen.MiniCCCodeGen;
 import bit.minisys.minicc.optimizer.MiniCCOptimizer;
 import bit.minisys.minicc.scanner.LexAnalyse;
+import bit.minisys.minicc.scanner.MiniCCScanner;
 import bit.minisys.minicc.parser.MiniCCParser;
 import bit.minisys.minicc.pp.MiniCCPreProcessor;
 import bit.minisys.minicc.simulator.MIPSSimulator;
@@ -25,7 +26,7 @@ public class MiniCCompiler {
 		
 		// step 2: lexanalyse
 		String sOutFile = ppOutFile.replace(MiniCCCfg.MINICC_PP_OUTPUT_EXT, MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT);
-		LexAnalyse s = new LexAnalyse();
+		MiniCCScanner s = new MiniCCScanner();
 		s.run(ppOutFile, sOutFile);
 		
 		// step 3: parser
