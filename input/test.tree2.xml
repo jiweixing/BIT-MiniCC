@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParserTree name="test.tree.xml">
+  <PROGRAM>
+    <FUNCTIONS>
+      <FUNCTION>
+        <TYPE>
+          <keyword>int</keyword>
+        </TYPE>
+        <identifier>main</identifier>
+        <separator>(</separator>
+        <ARGS>
+          <FARGS>
+            <TYPE>
+              <keyword>int</keyword>
+            </TYPE>
+            <identifier>a</identifier>
+          </FARGS>
+          <ALIST>
+            <separator>,</separator>
+            <FARGS>
+              <TYPE>
+                <keyword>int</keyword>
+              </TYPE>
+              <identifier>b</identifier>
+            </FARGS>
+            <ALIST />
+          </ALIST>
+        </ARGS>
+        <separator>)</separator>
+        <FUNC_BODY>
+          <separator>{</separator>
+          <STMTS>
+            <STMT>
+              <RET_STMT>
+                <keyword>return</keyword>
+                <EXPR_STMT>
+                  <EXPR>
+                    <TERM>
+                      <PLUS5>
+                        <identifier>a</identifier>
+                      </PLUS5>
+                      <PLUS4 />
+                    </TERM>
+                    <PLUS3>
+                      <operator>+</operator>
+                      <TERM>
+                        <PLUS5>
+                          <identifier>b</identifier>
+                        </PLUS5>
+                        <PLUS4 />
+                      </TERM>
+                      <PLUS3 />
+                    </PLUS3>
+                  </EXPR>
+                  <separator>;</separator>
+                </EXPR_STMT>
+              </RET_STMT>
+            </STMT>
+            <STMTS />
+          </STMTS>
+          <separator>}</separator>
+        </FUNC_BODY>
+      </FUNCTION>
+      <PLUS1 />
+    </FUNCTIONS>
+  </PROGRAM>
+</ParserTree>
+

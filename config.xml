@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config name="config.xml">
+  <phases>
+    <phase>
+      <phase skip="false" type="java" path="" name="pp" />
+      <phase skip="false" type="java" path="" name="scanning" />
+      <phase skip="false" type="java" path="" name="parsing" />
+      <phase skip="false" type="java" path="" name="semantic" />
+      <phase skip="false" type="java" path="" name="icgen" />
+      <phase skip="false" type="java" path="" name="optimizing" />
+      <phase skip="false" type="java" path="" name="codegen" />
+      <phase skip="false" type="java" path="" name="simulating" />
+    </phase>
+  </phases>
+</config>
+

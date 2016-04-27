@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IC name="test.ic.xml">
+  <functions>
+    <function>
+      <quaternion result="T1" arg2="b" arg1="a" op="+" addr="1" />
+      <quaternion result="" arg2="T1" arg1="" op="return" addr="2" />
+    </function>
+  </functions>
+</IC>
+

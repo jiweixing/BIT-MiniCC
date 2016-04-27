@@ -3,10 +3,15 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/jdom.jar"/>
-	<classpathentry kind="lib" path="lib/codegen.jar"/>
 	<classpathentry kind="lib" path="lib/Mars4_5.jar"/>
+	<classpathentry kind="lib" path="lib/codegen.jar"/>
+	<classpathentry kind="lib" path="lib/icgen.jar"/>
+	<classpathentry kind="lib" path="lib/opt.jar"/>
 	<classpathentry kind="lib" path="lib/parser.jar"/>
 	<classpathentry kind="lib" path="lib/pp.jar"/>
 	<classpathentry kind="lib" path="lib/scanner.jar"/>
+	<classpathentry kind="lib" path="lib/semantic.jar"/>
+	<classpathentry kind="lib" path="lib/simulator.jar"/>
+	<classpathentry kind="lib" path="lib/util.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

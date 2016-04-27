@@ -1,0 +1,91 @@
+步骤0	当前分析栈:FUNCTIONS#	余留符号串：intmain(inta,intb){returna+b;}#	语义栈:#
+
+步骤1	当前分析栈:FUNCTIONPLUS1#	余留符号串：intmain(inta,intb){returna+b;}#	语义栈:#
+
+步骤2	当前分析栈:TYPEid(ARGS)FUNC_BODYPLUS1#	余留符号串：intmain(inta,intb){returna+b;}#	语义栈:#
+
+步骤3	当前分析栈:intid(ARGS)FUNC_BODYPLUS1#	余留符号串：intmain(inta,intb){returna+b;}#	语义栈:#
+
+步骤4	当前分析栈:id(ARGS)FUNC_BODYPLUS1#	余留符号串：main(inta,intb){returna+b;}#	语义栈:#
+
+步骤5	当前分析栈:(ARGS)FUNC_BODYPLUS1#	余留符号串：(inta,intb){returna+b;}#	语义栈:#
+
+步骤6	当前分析栈:ARGS)FUNC_BODYPLUS1#	余留符号串：inta,intb){returna+b;}#	语义栈:#
+
+步骤7	当前分析栈:FARGSALIST)FUNC_BODYPLUS1#	余留符号串：inta,intb){returna+b;}#	语义栈:#
+
+步骤8	当前分析栈:TYPEidALIST)FUNC_BODYPLUS1#	余留符号串：inta,intb){returna+b;}#	语义栈:#
+
+步骤9	当前分析栈:intidALIST)FUNC_BODYPLUS1#	余留符号串：inta,intb){returna+b;}#	语义栈:#
+
+步骤10	当前分析栈:idALIST)FUNC_BODYPLUS1#	余留符号串：a,intb){returna+b;}#	语义栈:#
+
+步骤11	当前分析栈:ALIST)FUNC_BODYPLUS1#	余留符号串：,intb){returna+b;}#	语义栈:#
+
+步骤12	当前分析栈:,FARGSALIST)FUNC_BODYPLUS1#	余留符号串：,intb){returna+b;}#	语义栈:#
+
+步骤13	当前分析栈:FARGSALIST)FUNC_BODYPLUS1#	余留符号串：intb){returna+b;}#	语义栈:#
+
+步骤14	当前分析栈:TYPEidALIST)FUNC_BODYPLUS1#	余留符号串：intb){returna+b;}#	语义栈:#
+
+步骤15	当前分析栈:intidALIST)FUNC_BODYPLUS1#	余留符号串：intb){returna+b;}#	语义栈:#
+
+步骤16	当前分析栈:idALIST)FUNC_BODYPLUS1#	余留符号串：b){returna+b;}#	语义栈:#
+
+步骤17	当前分析栈:ALIST)FUNC_BODYPLUS1#	余留符号串：){returna+b;}#	语义栈:#
+
+步骤18	当前分析栈:)FUNC_BODYPLUS1#	余留符号串：){returna+b;}#	语义栈:#
+
+步骤19	当前分析栈:FUNC_BODYPLUS1#	余留符号串：{returna+b;}#	语义栈:#
+
+步骤20	当前分析栈:{STMTS}PLUS1#	余留符号串：{returna+b;}#	语义栈:#
+
+步骤21	当前分析栈:STMTS}PLUS1#	余留符号串：returna+b;}#	语义栈:#
+
+步骤22	当前分析栈:STMTSTMTS}PLUS1#	余留符号串：returna+b;}#	语义栈:#
+
+步骤23	当前分析栈:RET_STMTSTMTS}PLUS1#	余留符号串：returna+b;}#	语义栈:#
+
+步骤24	当前分析栈:returnEXPR_STMTSTMTS}PLUS1#	余留符号串：returna+b;}#	语义栈:#
+
+步骤25	当前分析栈:EXPR_STMTSTMTS}PLUS1#	余留符号串：a+b;}#	语义栈:#
+
+步骤26	当前分析栈:EXPR;STMTS}PLUS1#	余留符号串：a+b;}#	语义栈:#
+
+步骤27	当前分析栈:TERMPLUS3;STMTS}PLUS1#	余留符号串：a+b;}#	语义栈:#
+
+步骤28	当前分析栈:PLUS5PLUS4PLUS3;STMTS}PLUS1#	余留符号串：a+b;}#	语义栈:#
+
+步骤29	当前分析栈:idPLUS4PLUS3;STMTS}PLUS1#	余留符号串：a+b;}#	语义栈:#
+
+步骤30	当前分析栈:PLUS4PLUS3;STMTS}PLUS1#	余留符号串：+b;}#	语义栈:#
+
+步骤31	当前分析栈:PLUS3;STMTS}PLUS1#	余留符号串：+b;}#	语义栈:#
+
+步骤32	当前分析栈:+TERMPLUS3;STMTS}PLUS1#	余留符号串：+b;}#	语义栈:#
+
+步骤33	当前分析栈:TERMPLUS3;STMTS}PLUS1#	余留符号串：b;}#	语义栈:#
+
+步骤34	当前分析栈:PLUS5PLUS4PLUS3;STMTS}PLUS1#	余留符号串：b;}#	语义栈:#
+
+步骤35	当前分析栈:idPLUS4PLUS3;STMTS}PLUS1#	余留符号串：b;}#	语义栈:#
+
+步骤36	当前分析栈:PLUS4PLUS3;STMTS}PLUS1#	余留符号串：;}#	语义栈:#
+
+步骤37	当前分析栈:PLUS3;STMTS}PLUS1#	余留符号串：;}#	语义栈:#
+
+步骤38	当前分析栈:;STMTS}PLUS1#	余留符号串：;}#	语义栈:#
+
+步骤39	当前分析栈:STMTS}PLUS1#	余留符号串：}#	语义栈:#
+
+步骤40	当前分析栈:}PLUS1#	余留符号串：}#	语义栈:#
+
+步骤41	当前分析栈:PLUS1#	余留符号串：#	语义栈:#
+
+步骤42	当前分析栈:#	余留符号串：#	语义栈:#
+
+步骤43	
+当前分析栈:	余留符号串：	语义栈:#
+
+
+语法分析通过

@@ -27,6 +27,7 @@ public class BITMiniCC {
 //		System.out.println(file);
 		MiniCCompiler cc = new MiniCCompiler();
 		System.out.println("Start to compile ...");
+//		System.out.println(System.getProperty("user.dir"));
 		cc.run(file);
 		System.out.println("Compiling completed!");
 	}

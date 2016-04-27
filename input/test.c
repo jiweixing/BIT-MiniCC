@@ -1,6 +1,3 @@
-void main(){
-	int i;
-	char ch = 68;
-	i = 5;
+int main(int a, int b){	//main function
+    return a + b;
 }
-
