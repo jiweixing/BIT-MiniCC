@@ -34,7 +34,7 @@ public class MiniCCompiler {
 	private void readConfig() throws ParserConfigurationException, SAXException, IOException{
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(".\\config.xml");
+		Document doc = db.parse("./config.xml");
 //		System.out.println("path: " + path);
 		NodeList nodeList = doc.getElementsByTagName("phase");
 		for (int i = 0; i < nodeList.getLength(); i++){
@@ -175,7 +175,7 @@ public class MiniCCompiler {
 	}
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
-		Runtime rt = Runtime.getRuntime();//¸ñÊ½£ºexeÃû ÊäÈëÎÄ¼þ Êä³öÎÄ¼þ
+		Runtime rt = Runtime.getRuntime();//ï¿½ï¿½Ê½ï¿½ï¿½exeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 		rt.exec(path + " " + iFile + " " + oFile);
 	}
 }
