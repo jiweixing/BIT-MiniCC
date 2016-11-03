@@ -1,9 +1,9 @@
 # bit-minic-compiler
 A C compiler framework in Java
 
-Weixing Ji, jwx@bit.edu.cn
-Kai Li,
-Guizhen Wang
+Weixing Ji (jwx@bit.edu.cn) <br> 
+Kai Li,<br> 
+Guizhen Wang<br> 
 
-
-YiFan Wu
+Contributor:<br> 
+YiFan Wu, 2015-2016
