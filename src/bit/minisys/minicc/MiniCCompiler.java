@@ -1,15 +1,21 @@
 package bit.minisys.minicc;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.python.util.PythonInterpreter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+
+
+
 
 import bit.minisys.minicc.codegen.MiniCCCodeGen;
 import bit.minisys.minicc.icgen.MiniCCICGen;
@@ -34,7 +40,7 @@ public class MiniCCompiler {
 	private void readConfig() throws ParserConfigurationException, SAXException, IOException{
 		DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
 		DocumentBuilder db = dbf.newDocumentBuilder();
-		Document doc = db.parse(".\\config.xml");
+		Document doc = db.parse("./config.xml");
 //		System.out.println("path: " + path);
 		NodeList nodeList = doc.getElementsByTagName("phase");
 		for (int i = 0; i < nodeList.getLength(); i++){
@@ -85,16 +91,25 @@ public class MiniCCompiler {
 		}
 	}
 	
-	public void run(String cFile) throws IOException, ParserConfigurationException, SAXException{
+	public void run(String cFile) throws IOException, ParserConfigurationException, SAXException, ReflectiveOperationException{
 		
 		readConfig();
 		
 		// step 1: preprocess
 		String ppOutFile = cFile.replace(MiniCCCfg.MINICC_PP_INPUT_EXT, MiniCCCfg.MINICC_PP_OUTPUT_EXT);
-		MiniCCPreProcessor prep = new MiniCCPreProcessor();
+		
 		if(pp.skip.equals("false")){
 			if(pp.type.equals("java")){
-				prep.run(cFile, ppOutFile);
+				if(pp.path != ""){
+					Class<?> c = Class.forName(pp.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), cFile, ppOutFile);
+				}else{
+					MiniCCPreProcessor prep = new MiniCCPreProcessor();
+					prep.run(cFile, ppOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(cFile, ppOutFile, pp.path);
 			}else{
 				this.run(cFile, ppOutFile, pp.path);
 			}
@@ -102,10 +117,19 @@ public class MiniCCompiler {
 		
 		// step 2: scan
 		String scOutFile = ppOutFile.replace(MiniCCCfg.MINICC_PP_OUTPUT_EXT, MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT);
-		MiniCCScanner sc = new MiniCCScanner();
+		
 		if(scanning.skip.equals("false")){
 			if(scanning.type.equals("java")){
-				sc.run(ppOutFile, scOutFile);
+				if(scanning.path != ""){
+					Class<?> c = Class.forName(scanning.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), ppOutFile, scOutFile);
+				}else{
+					MiniCCScanner sc = new MiniCCScanner();
+					sc.run(ppOutFile, scOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(ppOutFile, scOutFile, scanning.path);
 			}else{
 				this.run(ppOutFile, scOutFile, scanning.path);
 			}
@@ -113,10 +137,19 @@ public class MiniCCompiler {
 		
 		// step 3: parser
 		String pOutFile = scOutFile.replace(MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT, MiniCCCfg.MINICC_PARSER_OUTPUT_EXT);
-		MiniCCParser p = new MiniCCParser();
+		
 		if(parsing.skip.equals("false")){
 			if(parsing.type.equals("java")){
-				p.run(scOutFile, pOutFile);
+				if(parsing.path != ""){
+					Class<?> c = Class.forName(parsing.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), scOutFile, pOutFile);
+				}else{
+					MiniCCParser p = new MiniCCParser();
+					p.run(scOutFile, pOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(scOutFile, pOutFile, parsing.path);
 			}else{
 				this.run(scOutFile, pOutFile, parsing.path);
 			}
@@ -124,10 +157,19 @@ public class MiniCCompiler {
 		
 		// step 4: semantic
 		String seOutFile = pOutFile.replace(MiniCCCfg.MINICC_PARSER_OUTPUT_EXT, MiniCCCfg.MINICC_SEMANTIC_OUTPUT_EXT);
-		MiniCCSemantic se = new MiniCCSemantic();
+		
 		if(semantic.skip.equals("false")){
 			if(semantic.type.equals("java")){
-				se.run(pOutFile, seOutFile);
+				if(semantic.path != ""){
+					Class<?> c = Class.forName(semantic.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), pOutFile, seOutFile);
+				}else{
+					MiniCCSemantic se = new MiniCCSemantic();
+					se.run(pOutFile, seOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(pOutFile, seOutFile, semantic.path);
 			}else{
 				this.run(pOutFile, seOutFile, semantic.path);
 			}
@@ -135,10 +177,19 @@ public class MiniCCompiler {
 
 		// step 5: intermediate code generate
 		String icOutFile = seOutFile.replace(MiniCCCfg.MINICC_SEMANTIC_OUTPUT_EXT, MiniCCCfg.MINICC_ICGEN_OUTPUT_EXT);
-		MiniCCICGen ic = new MiniCCICGen();
+		
 		if(icgen.skip.equals("false")){
 			if(icgen.type.equals("java")){
-				ic.run(seOutFile, icOutFile);
+				if(icgen.path != ""){
+					Class<?> c = Class.forName(icgen.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), seOutFile, icOutFile);
+				}else{
+					MiniCCICGen ic = new MiniCCICGen();
+					ic.run(seOutFile, icOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(seOutFile, icOutFile, icgen.path);
 			}else{
 				this.run(seOutFile, icOutFile, icgen.path);
 			}
@@ -146,10 +197,19 @@ public class MiniCCompiler {
 		
 		// step 6: optimization
 		String oOutFile = icOutFile.replace(MiniCCCfg.MINICC_ICGEN_OUTPUT_EXT, MiniCCCfg.MINICC_OPT_OUTPUT_EXT);
-		MiniCCOptimizer o = new MiniCCOptimizer();
+		
 		if(optimizing.skip.equals("false")){
 			if(optimizing.type.equals("java")){
-				o.run(icOutFile, oOutFile);
+				if(optimizing.path != ""){
+					Class<?> c = Class.forName(optimizing.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), icOutFile, oOutFile);
+				}else{
+					MiniCCOptimizer o = new MiniCCOptimizer();
+					o.run(icOutFile, oOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(icOutFile, oOutFile, optimizing.path);
 			}else{
 				this.run(icOutFile, oOutFile, optimizing.path);
 			}
@@ -157,10 +217,19 @@ public class MiniCCompiler {
 
 		// step 7: code generate
 		String cOutFile = oOutFile.replace(MiniCCCfg.MINICC_OPT_OUTPUT_EXT, MiniCCCfg.MINICC_CODEGEN_OUTPUT_EXT);
-		MiniCCCodeGen g = new MiniCCCodeGen();
+		
 		if(codegen.skip.equals("false")){
 			if(codegen.type.equals("java")){
-				g.run(oOutFile, cOutFile);
+				if(codegen.path != ""){
+					Class<?> c = Class.forName(codegen.path);
+					Method method = c.getMethod("run", String.class, String.class);
+					method.invoke(c.newInstance(), oOutFile, cOutFile);
+				}else{
+					MiniCCCodeGen g = new MiniCCCodeGen();
+					g.run(oOutFile, cOutFile);
+				}
+			}else if(pp.type.equals("python")){
+				this.runPy(oOutFile, cOutFile, codegen.path);
 			}else{
 				this.run(oOutFile, cOutFile, codegen.path);
 			}
@@ -177,5 +246,9 @@ public class MiniCCompiler {
 	private void run(String iFile, String oFile, String path) throws IOException{
 		Runtime rt = Runtime.getRuntime();//格式：exe名 输入文件 输出文件
 		rt.exec(path + " " + iFile + " " + oFile);
+	}
+	private void runPy(String iFile, String oFile, String path) throws IOException{
+		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件
+		pyi.exec(path + " " + iFile + " " + oFile);
 	}
 }
