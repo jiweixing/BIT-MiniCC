@@ -244,7 +244,7 @@ public class MiniCCompiler {
 	}
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
-		Runtime rt = Runtime.getRuntime();//¸ñÊ½£ºexeÃû ÊäÈëÎÄ¼ş Êä³öÎÄ¼ş
+		Runtime rt = Runtime.getRuntime();//ï¿½ï¿½Ê½ï¿½ï¿½exeï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½ ï¿½ï¿½ï¿½ï¿½Ä¼ï¿½
 		rt.exec(path + " " + iFile + " " + oFile);
 	}
 	private void runPy(String iFile, String oFile, String path) throws IOException{
