@@ -9,117 +9,116 @@
       <valid>true</valid>
     </token>
     <token>
-      <number>2</number>
+      <number>1</number>
       <value>main</value>
       <type>identifier</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>3</number>
+      <number>1</number>
       <value>(</value>
       <type>separator</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>4</number>
+      <number>1</number>
       <value>int</value>
       <type>keyword</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>5</number>
+      <number>1</number>
       <value>a</value>
       <type>identifier</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>6</number>
+      <number>1</number>
       <value>,</value>
       <type>separator</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>7</number>
+      <number>1</number>
       <value>int</value>
       <type>keyword</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>8</number>
+      <number>1</number>
       <value>b</value>
       <type>identifier</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>9</number>
+      <number>1</number>
       <value>)</value>
       <type>separator</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>10</number>
+      <number>1</number>
       <value>{</value>
       <type>separator</type>
       <line>1</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>11</number>
+      <number>1</number>
       <value>return</value>
       <type>keyword</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>12</number>
+      <number>1</number>
       <value>a</value>
       <type>identifier</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>13</number>
+      <number>1</number>
       <value>+</value>
       <type>operator</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>14</number>
+      <number>1</number>
       <value>b</value>
       <type>identifier</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>15</number>
+      <number>1</number>
       <value>;</value>
       <type>separator</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>16</number>
+      <number>1</number>
       <value>}</value>
       <type>separator</type>
-      <line>1</line>
+      <line>3</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>17</number>
+      <number>1</number>
       <value>#</value>
       <type>#</type>
-      <line>2</line>
+      <line>4</line>
       <valid>true</valid>
     </token>
   </tokens>
 </project>
-

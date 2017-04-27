@@ -9,11 +9,9 @@ import org.xml.sax.SAXException;
 public class BITMiniCC {
 	/**
 	 * @param args
-	 * @throws IOException 
-	 * @throws SAXException 
-	 * @throws ParserConfigurationException 
+	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws IOException, ParserConfigurationException, SAXException {
+	public static void main(String[] args) throws Exception {
 		//System.out.println(System.getProperty("user.dir"));
 		if(args.length < 1){
 			usage();

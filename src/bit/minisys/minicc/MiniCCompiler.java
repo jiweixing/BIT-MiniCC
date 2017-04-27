@@ -91,7 +91,7 @@ public class MiniCCompiler {
 		}
 	}
 	
-	public void run(String cFile) throws IOException, ParserConfigurationException, SAXException, ReflectiveOperationException{
+	public void run(String cFile) throws Exception{
 		
 		readConfig();
 		

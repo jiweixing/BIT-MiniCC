@@ -35,22 +35,16 @@
                 <keyword>return</keyword>
                 <EXPR_STMT>
                   <EXPR>
-                    <TERM>
-                      <PLUS5>
-                        <identifier>a</identifier>
-                      </PLUS5>
-                      <PLUS4 />
-                    </TERM>
-                    <PLUS3>
+                    <FACTOR>
+                      <identifier>a</identifier>
+                    </FACTOR>
+                    <FLIST>
                       <operator>+</operator>
-                      <TERM>
-                        <PLUS5>
-                          <identifier>b</identifier>
-                        </PLUS5>
-                        <PLUS4 />
-                      </TERM>
-                      <PLUS3 />
-                    </PLUS3>
+                      <FACTOR>
+                        <identifier>b</identifier>
+                      </FACTOR>
+                      <FLIST />
+                    </FLIST>
                   </EXPR>
                   <separator>;</separator>
                 </EXPR_STMT>
@@ -61,7 +55,7 @@
           <separator>}</separator>
         </FUNC_BODY>
       </FUNCTION>
-      <PLUS1 />
+      <FUNLIST />
     </FUNCTIONS>
   </PROGRAM>
 </ParserTree>
