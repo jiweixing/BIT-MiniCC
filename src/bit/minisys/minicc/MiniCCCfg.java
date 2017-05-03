@@ -3,28 +3,28 @@ package bit.minisys.minicc;
 
 public class MiniCCCfg {
 	// input and output for MiniCCPreProcessor
-	public static String MINICC_PP_INPUT_EXT = ".c";//CÔ´³ÌĞò
-	public static String MINICC_PP_OUTPUT_EXT = ".pp.c";//É¾³ıÎŞÓÃ×¢ÊÍºÍ¿Õ¸ñ£¬ºêÌæ»»ÓëÎÄ¼ş°üº¬
+	public static String MINICC_PP_INPUT_EXT = ".c";//Cæºç¨‹åº
+	public static String MINICC_PP_OUTPUT_EXT = ".pp.c";//åˆ é™¤æ— ç”¨æ³¨é‡Šå’Œç©ºæ ¼ï¼Œå®æ›¿æ¢ä¸æ–‡ä»¶åŒ…å«
 	// input and output for MiniCCScanner
-	public static String MINICC_SCANNER_INPUT_EXT = ".pp.c";//Ô¤´¦Àí¹ıµÄC³ÌĞò
-	public static String MINICC_SCANNER_OUTPUT_EXT = ".token.xml";//´Ê·¨·ÖÎö£¬Éú³ÉÊôĞÔ×Ö·ûÁ÷
+	public static String MINICC_SCANNER_INPUT_EXT = ".pp.c";//é¢„å¤„ç†è¿‡çš„Cç¨‹åº
+	public static String MINICC_SCANNER_OUTPUT_EXT = ".token.xml";//è¯æ³•åˆ†æï¼Œç”Ÿæˆå±æ€§å­—ç¬¦æµ
 	// input and output for MiniCCParser
-	public static String MINICC_PARSER_INPUT_EXT = ".token.xml";//´Ê·¨·ÖÎöºóµÄÊôĞÔ×Ö·ûÁ÷
-	public static String MINICC_PARSER_OUTPUT_EXT = ".tree.xml";//Óï·¨·ÖÎö£¬Éú³ÉÓï·¨Ê÷
+	public static String MINICC_PARSER_INPUT_EXT = ".token.xml";//è¯æ³•åˆ†æåçš„å±æ€§å­—ç¬¦æµ
+	public static String MINICC_PARSER_OUTPUT_EXT = ".tree.xml";//è¯­æ³•åˆ†æï¼Œç”Ÿæˆè¯­æ³•æ ‘
 	// input and output for MiniCCSemantic
-	public static String MINICC_SEMANTIC_INPUT_EXT = ".tree.xml";//Óï·¨Ê÷
-	public static String MINICC_SEMANTIC_OUTPUT_EXT = ".tree2.xml";//ÓïÒå¼ì²é
+	public static String MINICC_SEMANTIC_INPUT_EXT = ".tree.xml";//è¯­æ³•æ ‘
+	public static String MINICC_SEMANTIC_OUTPUT_EXT = ".tree2.xml";//è¯­ä¹‰æ£€æŸ¥
 	// input and output for MiniCCICGen
-	public static String MINICC_ICGEN_INPUT_EXT = ".tree2.xml";//Óï·¨Ê÷
-	public static String MINICC_ICGEN_OUTPUT_EXT = ".ic.xml";//Éú³ÉËÄÔªÊ½ÁĞ±í
+	public static String MINICC_ICGEN_INPUT_EXT = ".tree2.xml";//è¯­æ³•æ ‘
+	public static String MINICC_ICGEN_OUTPUT_EXT = ".ic.xml";//ç”Ÿæˆå››å…ƒå¼åˆ—è¡¨
 	// input and output for MiniCCOpt
-	public static String MINICC_OPT_INPUT_EXT = ".ic.xml";//ÖĞ¼ä´úÂë
-	public static String MINICC_OPT_OUTPUT_EXT = ".ic2.xml";//ÊµÊ©³£Á¿ºÏ²¢µÈ´úÂëÓÅ»¯
+	public static String MINICC_OPT_INPUT_EXT = ".ic.xml";//ä¸­é—´ä»£ç 
+	public static String MINICC_OPT_OUTPUT_EXT = ".ic2.xml";//å®æ–½å¸¸é‡åˆå¹¶ç­‰ä»£ç ä¼˜åŒ–
 	// input and output for MiniCCCodeGen
-	public static String MINICC_CODEGEN_INPUT_EXT = ".ic2.xml";//ÖĞ¼ä´úÂë
-	public static String MINICC_CODEGEN_OUTPUT_EXT = ".code.s";//Éú³Éx86»òÕßMIPS»ã±à´úÂë
+	public static String MINICC_CODEGEN_INPUT_EXT = ".ic2.xml";//ä¸­é—´ä»£ç 
+	public static String MINICC_CODEGEN_OUTPUT_EXT = ".code.s";//ç”Ÿæˆx86æˆ–è€…MIPSæ±‡ç¼–ä»£ç 
 	// input and output for simulator
-	public static String MINICC_ASSEMBLER_INPUT_EXT = ".code.s";//Ä¿±ê´úÂë
+	public static String MINICC_ASSEMBLER_INPUT_EXT = ".code.s";//ç›®æ ‡ä»£ç 
 	
 	//structure for config.xml
 	public String type;
