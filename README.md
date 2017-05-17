@@ -6,4 +6,5 @@ Kai Li<br>
 Guizhen Wang<br> 
 
 Contributor:<br> 
+Shuofu Ning, 2016-2017
 YiFan Wu, 2015-2016

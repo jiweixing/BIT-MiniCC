@@ -7,12 +7,14 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.xml.sax.SAXException;
 
 public class BITMiniCC {
+	
 	/**
 	 * @param args
 	 * @throws Exception 
 	 */
 	public static void main(String[] args) throws Exception {
 		//System.out.println(System.getProperty("user.dir"));
+		
 		if(args.length < 1){
 			usage();
 			return;

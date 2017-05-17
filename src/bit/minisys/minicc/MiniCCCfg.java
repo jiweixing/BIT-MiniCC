@@ -1,6 +1,5 @@
 package bit.minisys.minicc;
 
-
 public class MiniCCCfg {
 	// input and output for MiniCCPreProcessor
 	public static String MINICC_PP_INPUT_EXT = ".c";//CÔ´³ÌÐò

@@ -17,14 +17,14 @@ import org.xml.sax.SAXException;
 
 
 
+
 import bit.minisys.minicc.codegen.MiniCCCodeGen;
 import bit.minisys.minicc.icgen.MiniCCICGen;
 import bit.minisys.minicc.optimizer.MiniCCOptimizer;
 import bit.minisys.minicc.scanner.MiniCCScanner;
 import bit.minisys.minicc.semantic.MiniCCSemantic;
 import bit.minisys.minicc.parser.MiniCCParser;
-import bit.minisys.minicc.pp.MiniCCPreProcessor;
-//import bit.minisys.minicc.scanner.MiniCCScannerInternal;
+import bit.minisys.minicc.pp.PreProcessor;
 import bit.minisys.minicc.simulator.MIPSSimulator;
 
 public class MiniCCompiler {
@@ -105,7 +105,7 @@ public class MiniCCompiler {
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), cFile, ppOutFile);
 				}else{
-					MiniCCPreProcessor prep = new MiniCCPreProcessor();
+					PreProcessor prep = new PreProcessor();
 					prep.run(cFile, ppOutFile);
 				}
 			}else if(pp.type.equals("python")){
@@ -146,7 +146,7 @@ public class MiniCCompiler {
 					method.invoke(c.newInstance(), scOutFile, pOutFile);
 				}else{
 					MiniCCParser p = new MiniCCParser();
-					p.run(scOutFile, pOutFile);
+					p.run(scOutFile,pOutFile);
 				}
 			}else if(pp.type.equals("python")){
 				this.runPy(scOutFile, pOutFile, parsing.path);
@@ -236,8 +236,8 @@ public class MiniCCompiler {
 		}
 		
 		// step 8: simulate
-		MIPSSimulator m = new MIPSSimulator();
 		if(simulating.skip.equals("false")){
+			MIPSSimulator m = new MIPSSimulator();
 			m.run(cOutFile);
 		}
 		
@@ -245,7 +245,14 @@ public class MiniCCompiler {
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
 		Runtime rt = Runtime.getRuntime();//格式：exe名 输入文件 输出文件
-		rt.exec(path + " " + iFile + " " + oFile);
+		Process p = rt.exec(path + " " + iFile + " " + oFile);
+		try {
+			p.wait();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
 	}
 	private void runPy(String iFile, String oFile, String path) throws IOException{
 		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件

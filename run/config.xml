@@ -4,7 +4,7 @@
     <phase>
       <phase skip="false" type="java" path="" name="pp" />
       <phase skip="false" type="java" path="" name="scanning" />
-      <phase skip="true" type="java" path="" name="parsing" />
+      <phase skip="false" type="java" path="" name="parsing" />
       <phase skip="true" type="java" path="" name="semantic" />
       <phase skip="true" type="java" path="" name="icgen" />
       <phase skip="true" type="java" path="" name="optimizing" />
