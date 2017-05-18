@@ -1,5 +1,7 @@
 package bit.minisys.minicc;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
@@ -146,7 +148,7 @@ public class MiniCCompiler {
 					method.invoke(c.newInstance(), scOutFile, pOutFile);
 				}else{
 					MiniCCParser p = new MiniCCParser();
-					p.run(scOutFile,pOutFile);
+					p.run(pOutFile);
 				}
 			}else if(pp.type.equals("python")){
 				this.runPy(scOutFile, pOutFile, parsing.path);
@@ -257,5 +259,17 @@ public class MiniCCompiler {
 	private void runPy(String iFile, String oFile, String path) throws IOException{
 		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件
 		pyi.exec(path + " " + iFile + " " + oFile);
+	}
+	public static void createAndWriteFile(String file, String content){
+		FileWriter fw;
+		try {
+			fw = new FileWriter(file, false);
+			BufferedWriter bw = new BufferedWriter(fw);
+			bw.write(content);
+			bw.close();
+			fw.close();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 }
