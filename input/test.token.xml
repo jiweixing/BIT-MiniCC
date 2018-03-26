@@ -5,28 +5,28 @@
       <number>1</number>
       <value>int</value>
       <type>keyword</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
       <number>2</number>
       <value>main</value>
-      <type>identifier</type>
-      <line>1</line>
+      <type>GiG</type>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
       <number>3</number>
       <value>(</value>
       <type>separator</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
       <number>4</number>
       <value>)</value>
       <type>separator</type>
-      <line>1</line>
+      <line>2</line>
       <valid>true</valid>
     </token>
     <token>
@@ -45,113 +45,113 @@
     </token>
     <token>
       <number>7</number>
-      <value>i</value>
-      <type>identifier</type>
+      <value>a</value>
+      <type>GiG</type>
       <line>3</line>
       <valid>true</valid>
     </token>
     <token>
       <number>8</number>
-      <value>,</value>
-      <type>separator</type>
+      <value>=</value>
+      <type>operator</type>
       <line>3</line>
       <valid>true</valid>
     </token>
     <token>
       <number>9</number>
-      <value>j</value>
-      <type>identifier</type>
+      <value>0</value>
+      <type>GjG</type>
       <line>3</line>
       <valid>true</valid>
     </token>
     <token>
       <number>10</number>
-      <value>,</value>
+      <value>;</value>
       <type>separator</type>
       <line>3</line>
       <valid>true</valid>
     </token>
     <token>
       <number>11</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>3</line>
+      <value>a</value>
+      <type>GiG</type>
+      <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>12</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>3</line>
+      <value>=</value>
+      <type>operator</type>
+      <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>13</number>
-      <value>printf</value>
-      <type>keyword</type>
+      <value>4</value>
+      <type>GjG</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>14</number>
-      <value>(</value>
-      <type>separator</type>
+      <value>*</value>
+      <type>operator</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>15</number>
-      <value>"\n"</value>
-      <type>stringLiteral</type>
+      <value>5</value>
+      <type>GjG</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>16</number>
-      <value>)</value>
-      <type>separator</type>
+      <value>+</value>
+      <type>operator</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>17</number>
+      <value>6</value>
+      <type>GjG</type>
+      <line>4</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>18</number>
+      <value>-</value>
+      <type>operator</type>
+      <line>4</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>19</number>
+      <value>7</value>
+      <type>GjG</type>
+      <line>4</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>20</number>
       <value>;</value>
       <type>separator</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>18</number>
-      <value>for</value>
+      <number>21</number>
+      <value>return</value>
       <type>keyword</type>
       <line>5</line>
       <valid>true</valid>
     </token>
     <token>
-      <number>19</number>
-      <value>(</value>
-      <type>separator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>20</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>21</number>
-      <value>=</value>
-      <type>operator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
       <number>22</number>
-      <value>1</value>
-      <type>const_i</type>
+      <value>a</value>
+      <type>GiG</type>
       <line>5</line>
       <valid>true</valid>
     </token>
@@ -164,436 +164,16 @@
     </token>
     <token>
       <number>24</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>5</line>
+      <value>}</value>
+      <type>separator</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>25</number>
-      <value>&lt;</value>
-      <type>operator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>26</number>
-      <value>5</value>
-      <type>const_i</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>27</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>28</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>29</number>
-      <value>++</value>
-      <type>operator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>30</number>
-      <value>)</value>
-      <type>separator</type>
-      <line>5</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>31</number>
-      <value>for</value>
-      <type>keyword</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>32</number>
-      <value>(</value>
-      <type>separator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>33</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>34</number>
-      <value>=</value>
-      <type>operator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>35</number>
-      <value>1</value>
-      <type>const_i</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>36</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>37</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>38</number>
-      <value>&lt;</value>
-      <type>operator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>39</number>
-      <value>5</value>
-      <type>const_i</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>40</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>41</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>42</number>
-      <value>++</value>
-      <type>operator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>43</number>
-      <value>)</value>
-      <type>separator</type>
-      <line>6</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>44</number>
-      <value>for</value>
-      <type>keyword</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>45</number>
-      <value>(</value>
-      <type>separator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>46</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>47</number>
-      <value>=</value>
-      <type>operator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>48</number>
-      <value>1</value>
-      <type>const_i</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>49</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>50</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>51</number>
-      <value>&lt;</value>
-      <type>operator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>52</number>
-      <value>5</value>
-      <type>const_i</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>53</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>54</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>55</number>
-      <value>++</value>
-      <type>operator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>56</number>
-      <value>)</value>
-      <type>separator</type>
-      <line>7</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>57</number>
-      <value>{</value>
-      <type>separator</type>
-      <line>8</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>58</number>
-      <value>if</value>
-      <type>keyword</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>59</number>
-      <value>(</value>
-      <type>separator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>60</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>61</number>
-      <value>!=</value>
-      <type>operator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>62</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>63</number>
-      <value>&amp;&amp;</value>
-      <type>operator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>64</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>65</number>
-      <value>!=</value>
-      <type>operator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>66</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>67</number>
-      <value>&amp;&amp;</value>
-      <type>operator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>68</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>69</number>
-      <value>!=</value>
-      <type>operator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>70</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>71</number>
-      <value>)</value>
-      <type>separator</type>
-      <line>9</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>72</number>
-      <value>printf</value>
-      <type>keyword</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>73</number>
-      <value>(</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>74</number>
-      <value>"%d,%d,%d\n"</value>
-      <type>stringLiteral</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>75</number>
-      <value>,</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>76</number>
-      <value>i</value>
-      <type>identifier</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>77</number>
-      <value>,</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>78</number>
-      <value>j</value>
-      <type>identifier</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>79</number>
-      <value>,</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>80</number>
-      <value>k</value>
-      <type>identifier</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>81</number>
-      <value>)</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>82</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>10</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>83</number>
-      <value>}</value>
-      <type>separator</type>
-      <line>11</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>84</number>
-      <value>}</value>
-      <type>separator</type>
-      <line>12</line>
-      <valid>true</valid>
-    </token>
-    <token>
-      <number>85</number>
       <value>#</value>
       <type>#</type>
-      <line>13</line>
+      <line>7</line>
       <valid>true</valid>
     </token>
   </tokens>

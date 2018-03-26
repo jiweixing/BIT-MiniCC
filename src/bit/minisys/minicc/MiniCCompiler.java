@@ -1,14 +1,12 @@
 package bit.minisys.minicc;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.lang.reflect.Method;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-
+import bit.minisys.minicc.pp.MiniCCPreProcessor;
 import org.python.util.PythonInterpreter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -26,7 +24,7 @@ import bit.minisys.minicc.optimizer.MiniCCOptimizer;
 import bit.minisys.minicc.scanner.MiniCCScanner;
 import bit.minisys.minicc.semantic.MiniCCSemantic;
 import bit.minisys.minicc.parser.MiniCCParser;
-import bit.minisys.minicc.pp.PreProcessor;
+
 import bit.minisys.minicc.simulator.MIPSSimulator;
 
 public class MiniCCompiler {
@@ -102,12 +100,12 @@ public class MiniCCompiler {
 		
 		if(pp.skip.equals("false")){
 			if(pp.type.equals("java")){
-				if(pp.path != ""){
+				if(!pp.path.equals("")){
 					Class<?> c = Class.forName(pp.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), cFile, ppOutFile);
 				}else{
-					PreProcessor prep = new PreProcessor();
+					MiniCCPreProcessor prep = new MiniCCPreProcessor();
 					prep.run(cFile, ppOutFile);
 				}
 			}else if(pp.type.equals("python")){
@@ -122,7 +120,7 @@ public class MiniCCompiler {
 		
 		if(scanning.skip.equals("false")){
 			if(scanning.type.equals("java")){
-				if(scanning.path != ""){
+				if(!scanning.path.equals("")){
 					Class<?> c = Class.forName(scanning.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), ppOutFile, scOutFile);
@@ -148,7 +146,7 @@ public class MiniCCompiler {
 					method.invoke(c.newInstance(), scOutFile, pOutFile);
 				}else{
 					MiniCCParser p = new MiniCCParser();
-					p.run(pOutFile);
+					p.run(scOutFile, pOutFile);
 				}
 			}else if(pp.type.equals("python")){
 				this.runPy(scOutFile, pOutFile, parsing.path);
@@ -162,7 +160,7 @@ public class MiniCCompiler {
 		
 		if(semantic.skip.equals("false")){
 			if(semantic.type.equals("java")){
-				if(semantic.path != ""){
+				if(!semantic.path.equals("")){
 					Class<?> c = Class.forName(semantic.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), pOutFile, seOutFile);
@@ -182,7 +180,7 @@ public class MiniCCompiler {
 		
 		if(icgen.skip.equals("false")){
 			if(icgen.type.equals("java")){
-				if(icgen.path != ""){
+				if(!icgen.path.equals("")){
 					Class<?> c = Class.forName(icgen.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), seOutFile, icOutFile);
@@ -202,7 +200,7 @@ public class MiniCCompiler {
 		
 		if(optimizing.skip.equals("false")){
 			if(optimizing.type.equals("java")){
-				if(optimizing.path != ""){
+				if(!optimizing.path.equals("")){
 					Class<?> c = Class.forName(optimizing.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), icOutFile, oOutFile);
@@ -222,7 +220,7 @@ public class MiniCCompiler {
 		
 		if(codegen.skip.equals("false")){
 			if(codegen.type.equals("java")){
-				if(codegen.path != ""){
+				if(!codegen.path.equals("")){
 					Class<?> c = Class.forName(codegen.path);
 					Method method = c.getMethod("run", String.class, String.class);
 					method.invoke(c.newInstance(), oOutFile, cOutFile);
@@ -259,17 +257,5 @@ public class MiniCCompiler {
 	private void runPy(String iFile, String oFile, String path) throws IOException{
 		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件
 		pyi.exec(path + " " + iFile + " " + oFile);
-	}
-	public static void createAndWriteFile(String file, String content){
-		FileWriter fw;
-		try {
-			fw = new FileWriter(file, false);
-			BufferedWriter bw = new BufferedWriter(fw);
-			bw.write(content);
-			bw.close();
-			fw.close();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 	}
 }
