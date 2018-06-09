@@ -52,128 +52,226 @@
     </token>
     <token>
       <number>8</number>
-      <value>=</value>
-      <type>operator</type>
+      <value>;</value>
+      <type>separator</type>
       <line>3</line>
       <valid>true</valid>
     </token>
     <token>
       <number>9</number>
-      <value>0</value>
-      <type>GjG</type>
-      <line>3</line>
+      <value>int</value>
+      <type>keyword</type>
+      <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>10</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>3</line>
+      <value>b</value>
+      <type>GiG</type>
+      <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>11</number>
-      <value>a</value>
-      <type>GiG</type>
+      <value>;</value>
+      <type>separator</type>
       <line>4</line>
       <valid>true</valid>
     </token>
     <token>
       <number>12</number>
-      <value>=</value>
-      <type>operator</type>
-      <line>4</line>
+      <value>a</value>
+      <type>GiG</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>13</number>
-      <value>4</value>
-      <type>GjG</type>
-      <line>4</line>
+      <value>=</value>
+      <type>operator</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>14</number>
-      <value>*</value>
-      <type>operator</type>
-      <line>4</line>
+      <value>MARS_SCANF_I</value>
+      <type>GiG</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>15</number>
-      <value>5</value>
-      <type>GjG</type>
-      <line>4</line>
+      <value>(</value>
+      <type>separator</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>16</number>
-      <value>+</value>
-      <type>operator</type>
-      <line>4</line>
+      <value>)</value>
+      <type>separator</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>17</number>
-      <value>6</value>
-      <type>GjG</type>
-      <line>4</line>
+      <value>;</value>
+      <type>separator</type>
+      <line>6</line>
       <valid>true</valid>
     </token>
     <token>
       <number>18</number>
-      <value>-</value>
-      <type>operator</type>
-      <line>4</line>
+      <value>b</value>
+      <type>GiG</type>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>19</number>
-      <value>7</value>
-      <type>GjG</type>
-      <line>4</line>
+      <value>=</value>
+      <type>operator</type>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>20</number>
-      <value>;</value>
-      <type>separator</type>
-      <line>4</line>
+      <value>MARS_SCANF_I</value>
+      <type>GiG</type>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>21</number>
-      <value>return</value>
-      <type>keyword</type>
-      <line>5</line>
+      <value>(</value>
+      <type>separator</type>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>22</number>
-      <value>a</value>
-      <type>GiG</type>
-      <line>5</line>
+      <value>)</value>
+      <type>separator</type>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>23</number>
       <value>;</value>
       <type>separator</type>
-      <line>5</line>
+      <line>7</line>
       <valid>true</valid>
     </token>
     <token>
       <number>24</number>
-      <value>}</value>
-      <type>separator</type>
-      <line>6</line>
+      <value>a</value>
+      <type>GiG</type>
+      <line>9</line>
       <valid>true</valid>
     </token>
     <token>
       <number>25</number>
+      <value>=</value>
+      <type>operator</type>
+      <line>9</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>26</number>
+      <value>a</value>
+      <type>GiG</type>
+      <line>9</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>27</number>
+      <value>+</value>
+      <type>operator</type>
+      <line>9</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>28</number>
+      <value>b</value>
+      <type>GiG</type>
+      <line>9</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>29</number>
+      <value>;</value>
+      <type>separator</type>
+      <line>9</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>30</number>
+      <value>MARS_PRINTF_I</value>
+      <type>GiG</type>
+      <line>11</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>31</number>
+      <value>(</value>
+      <type>separator</type>
+      <line>11</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>32</number>
+      <value>a</value>
+      <type>GiG</type>
+      <line>11</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>33</number>
+      <value>)</value>
+      <type>separator</type>
+      <line>11</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>34</number>
+      <value>;</value>
+      <type>separator</type>
+      <line>11</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>35</number>
+      <value>return</value>
+      <type>keyword</type>
+      <line>13</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>36</number>
+      <value>0</value>
+      <type>GjG</type>
+      <line>13</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>37</number>
+      <value>;</value>
+      <type>separator</type>
+      <line>13</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>38</number>
+      <value>}</value>
+      <type>separator</type>
+      <line>14</line>
+      <valid>true</valid>
+    </token>
+    <token>
+      <number>39</number>
       <value>#</value>
       <type>#</type>
-      <line>7</line>
+      <line>15</line>
       <valid>true</valid>
     </token>
   </tokens>
