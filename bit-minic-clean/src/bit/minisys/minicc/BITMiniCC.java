@@ -6,7 +6,10 @@ public class BITMiniCC {
 	 * @param args
 	 * @throws Exception 
 	 */
-	public static void main(String[] args) throws Exception {		
+
+	public static void main(String[] args) throws Exception {
+		//System.out.println(System.getProperty("user.dir"));
+		
 		if(args.length < 1){
 			usage();
 			return;
@@ -20,6 +23,7 @@ public class BITMiniCC {
 		
 		MiniCCompiler cc = new MiniCCompiler();
 		System.out.println("Start to compile ...");
+//		System.out.println(System.getProperty("user.dir"));
 		cc.run(file);
 		System.out.println("Compiling completed!");
 	}
