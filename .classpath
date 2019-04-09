@@ -1,25 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="lib" path="lib/jdom.jar"/>
-	<classpathentry kind="lib" path="lib/codegen.jar"/>
-	<classpathentry kind="lib" path="lib/icgen.jar"/>
-	<classpathentry kind="lib" path="lib/opt.jar"/>
-	<classpathentry kind="lib" path="lib/parser.jar"/>
-	<classpathentry kind="lib" path="lib/pp.jar"/>
-	<classpathentry kind="lib" path="lib/scanner.jar"/>
-	<classpathentry kind="lib" path="lib/semantic.jar"/>
-	<classpathentry kind="lib" path="lib/simulator.jar"/>
-	<classpathentry kind="lib" path="lib/util.jar"/>
-	<classpathentry kind="lib" path="lib/jython.jar"/>
-	<classpathentry kind="lib" path="lib/antlr-4.6-complete.jar"/>
-	<classpathentry kind="lib" path="lib/Mars4_5.jar"/>
-	
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8">
 		<attributes>
 			<attribute name="owner.project.facets" value="java"/>
 		</attributes>
 	</classpathentry>
-	
+	<classpathentry kind="lib" path="lib/BITMiniCC-obf.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -55,10 +55,10 @@
           </TNT_ADD_EXP>
         </TNT_ASNMT_EXP>
       </TNT_EXP_STMT>
-      <TNT_DECL name="functionCall">
+      <TNT_FUNC_CALL name="functionCall">
         <TNT_ID name="MARS_PRINTF_I"/>
         <TNT_ID name="a"/>
-      </TNT_DECL>
+      </TNT_FUNC_CALL>
       <TNT_JMP_STMT name="jumpStatement">
         <TNT_UNKNOWN name="return"/>
         <TNT_EXP name="expression">
