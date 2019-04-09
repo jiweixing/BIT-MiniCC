@@ -1,6 +1,10 @@
 package bit.minisys.minicc;
 
+import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.StringWriter;
 import java.lang.reflect.Method;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -21,6 +25,7 @@ import bit.minisys.minicc.pp.MiniCCPreProcessor;
 import bit.minisys.minicc.scanner.MiniCCScanner;
 import bit.minisys.minicc.semantic.MiniCCSemantic;
 import bit.minisys.minicc.simulator.*;
+import bit.minisys.minicc.util.MiniCCUtil;
 
 
 public class MiniCCompiler {
@@ -129,7 +134,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String scOutFile = filename.replace(MiniCCCfg.MINICC_SCANNER_INPUT_EXT, MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(scanning.type.equals("python")){
 					this.runPy(filename, scOutFile, scanning.path);
 				}else {
 					this.run(filename, scOutFile, scanning.path);
@@ -151,7 +156,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String pOutFile = filename.replace(MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT, MiniCCCfg.MINICC_PARSER_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(parsing.type.equals("python")){
 					this.runPy(filename, pOutFile, parsing.path);
 				} else {
 					this.run(filename, pOutFile, parsing.path);
@@ -173,7 +178,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String seOutFile = filename.replace(MiniCCCfg.MINICC_PARSER_OUTPUT_EXT, MiniCCCfg.MINICC_SEMANTIC_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(semantic.type.equals("python")){
 					this.runPy(filename, seOutFile, semantic.path);
 				}else{
 					this.run(filename, seOutFile, semantic.path);
@@ -195,7 +200,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String icOutFile = filename.replace(MiniCCCfg.MINICC_SEMANTIC_OUTPUT_EXT, MiniCCCfg.MINICC_ICGEN_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(icgen.type.equals("python")){
 					this.runPy(filename, icOutFile, icgen.path);
 				} else {
 					this.run(filename, icOutFile, icgen.path);
@@ -217,7 +222,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String oOutFile = filename.replace(MiniCCCfg.MINICC_ICGEN_OUTPUT_EXT, MiniCCCfg.MINICC_OPT_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(optimizing.type.equals("python")){
 					this.runPy(filename, oOutFile, optimizing.path);
 				} else {
 					this.run(filename, oOutFile, optimizing.path);
@@ -239,7 +244,7 @@ public class MiniCCompiler {
 				}
 			}else {
 				String cOutFile = filename.replace(MiniCCCfg.MINICC_OPT_OUTPUT_EXT, MiniCCCfg.MINICC_CODEGEN_OUTPUT_EXT);
-				if(pp.type.equals("python")){
+				if(codegen.type.equals("python")){
 					this.runPy(filename, cOutFile, codegen.path);
 				} else {
 					this.run(filename, cOutFile, codegen.path);
@@ -268,18 +273,28 @@ public class MiniCCompiler {
 	}
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
-		Runtime rt = Runtime.getRuntime();//鏍煎紡锛歟xe鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
-		Process p = rt.exec(path + " " + iFile + " " + oFile);
+		//Runtime rt = Runtime.getRuntime();//格式：exe名 输入文件 输出文件
+		ProcessBuilder pb = new ProcessBuilder(path, iFile, oFile);
+		
+		pb.redirectErrorStream(true);
+		pb.redirectOutput(ProcessBuilder.Redirect.INHERIT);
+		Process p = pb.start();
+		
 		try {
-			p.wait();
+			p.waitFor();
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
+		return;
 	}
 	private void runPy(String iFile, String oFile, String path) throws IOException{
-		PythonInterpreter pyi = new PythonInterpreter();//鏍煎紡锛歅ython鑴氭湰鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
-		pyi.exec(path + " " + iFile + " " + oFile);
+		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件
+		// DIRTY HACK! Apparently the retard who wrote this before don't know how to google.
+		pyi.exec("import sys\nsys.argv = ['<string>', \"" + MiniCCUtil.escape(iFile) + "\", \"" + MiniCCUtil.escape(oFile) + "\"]");
+		pyi.setOut(System.out);
+		pyi.execfile(path);
+		pyi.cleanup();
+		return;
 	}
 }
