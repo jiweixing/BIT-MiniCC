@@ -104,8 +104,8 @@ public class MiniCCompiler {
 			if(pp.type.equals("java")){
 				if(!pp.path.equals("")){
 					Class<?> c = Class.forName(pp.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), cFile);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCPreProcessor prep = new MiniCCPreProcessor();
 					filename = prep.run(cFile);
@@ -126,8 +126,8 @@ public class MiniCCompiler {
 			if(scanning.type.equals("java")){
 				if(!scanning.path.equals("")){
 					Class<?> c = Class.forName(scanning.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCScanner sc = new MiniCCScanner();
 					filename = sc.run(filename);
@@ -148,8 +148,8 @@ public class MiniCCompiler {
 			if(parsing.type.equals("java")){
 				if(parsing.path != ""){
 					Class<?> c = Class.forName(parsing.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCParser p = new MiniCCParser();
 					filename = p.run(filename);
@@ -170,8 +170,8 @@ public class MiniCCompiler {
 			if(semantic.type.equals("java")){
 				if(!semantic.path.equals("")){
 					Class<?> c = Class.forName(semantic.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCSemantic se = new MiniCCSemantic();
 					filename = se.run(filename);
@@ -192,8 +192,8 @@ public class MiniCCompiler {
 			if(icgen.type.equals("java")){
 				if(!icgen.path.equals("")){
 					Class<?> c = Class.forName(icgen.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCICGen ic = new MiniCCICGen();
 					filename = ic.run(filename);
@@ -214,8 +214,8 @@ public class MiniCCompiler {
 			if(optimizing.type.equals("java")){
 				if(!optimizing.path.equals("")){
 					Class<?> c = Class.forName(optimizing.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					Method method = c.getMethod("run", String.class);
+					filename = (String)method.invoke(c.newInstance(), cFile);
 				}else{
 					MiniCCOptimizer o = new MiniCCOptimizer();
 					filename = o.run(filename);
@@ -237,7 +237,7 @@ public class MiniCCompiler {
 				if(!codegen.path.equals("")){
 					Class<?> c = Class.forName(codegen.path);
 					Method method = c.getMethod("run", String.class, String.class);
-					method.invoke(c.newInstance(), filename);
+					filename = (String)method.invoke(c.newInstance(), cFile, codegen.arch);
 				}else{
 					MiniCCCodeGen g = new MiniCCCodeGen();
 					filename = g.run(filename, codegen.arch);
