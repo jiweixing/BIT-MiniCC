@@ -14,18 +14,20 @@ import javax.xml.parsers.ParserConfigurationException;
 import org.python.util.PythonInterpreter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.NameList;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xml.sax.*;
 
-import bit.minisys.minicc.codegen.MiniCCCodeGen;
-import bit.minisys.minicc.icgen.MiniCCICGen;
-import bit.minisys.minicc.optimizer.MiniCCOptimizer;
-import bit.minisys.minicc.parser.MiniCCParser;
-import bit.minisys.minicc.pp.MiniCCPreProcessor;
-import bit.minisys.minicc.scanner.MiniCCScanner;
-import bit.minisys.minicc.semantic.MiniCCSemantic;
+import bit.minisys.minicc.icgen.internal.MiniCCICGen;
+import bit.minisys.minicc.internal.util.MiniCCUtil;
+import bit.minisys.minicc.ncgen.internal.MiniCCCodeGen;
+import bit.minisys.minicc.optimizer.internal.MiniCCOptimizer;
+import bit.minisys.minicc.parser.internal.MiniCCParser;
+import bit.minisys.minicc.pp.internal.MiniCCPreProcessor;
+import bit.minisys.minicc.scanner.internal.MiniCCScanner;
+import bit.minisys.minicc.semantic.internal.MiniCCSemantic;
 import bit.minisys.minicc.simulator.*;
-import bit.minisys.minicc.util.MiniCCUtil;
 
 
 public class MiniCCompiler {
@@ -47,18 +49,18 @@ public class MiniCCompiler {
 		for (int i = 0; i < nodeList.getLength(); i++){
 			Element temp = (Element) nodeList.item(i);
 			String name = temp.getAttribute("name");
-			if(name.equals("pp")) {
+			if(name.equals("preprocess")) {
 				pp.type = temp.getAttribute("type");
 				pp.path = temp.getAttribute("path");
 				pp.skip = temp.getAttribute("skip");
 			}
-			else if(name.equals("scanning")) {
+			else if(name.equals("scan")) {
 				scanning.type = temp.getAttribute("type");
 				scanning.path = temp.getAttribute("path");
 				scanning.skip = temp.getAttribute("skip");
 				
 			}
-			else if(name.equals("parsing")) {
+			else if(name.equals("parse")) {
 				parsing.type = temp.getAttribute("type");
 				parsing.path = temp.getAttribute("path");
 				parsing.skip = temp.getAttribute("skip");
@@ -73,18 +75,18 @@ public class MiniCCompiler {
 				icgen.path = temp.getAttribute("path");
 				icgen.skip = temp.getAttribute("skip");
 			}
-			else if(name.equals("optimizing")) {
+			else if(name.equals("optimize")) {
 				optimizing.type = temp.getAttribute("type");
 				optimizing.path = temp.getAttribute("path");
 				optimizing.skip = temp.getAttribute("skip");
 			}
-			else if(name.equals("codegen")) {
+			else if(name.equals("ncgen")) {
 				codegen.type = temp.getAttribute("type");
 				codegen.path = temp.getAttribute("path");
 				codegen.skip = temp.getAttribute("skip");
 				codegen.arch = temp.getAttribute("arch");
 			}
-			else if(name.equals("simulating")) {
+			else if(name.equals("simulate")) {
 				simulating.type = temp.getAttribute("type");
 				simulating.path = temp.getAttribute("path");
 				simulating.skip = temp.getAttribute("skip");
@@ -146,7 +148,7 @@ public class MiniCCompiler {
 		// step 3: parser
 		if(parsing.skip.equals("false")){
 			if(parsing.type.equals("java")){
-				if(parsing.path != ""){
+				if(!parsing.path.equals("")){
 					Class<?> c = Class.forName(parsing.path);
 					Method method = c.getMethod("run", String.class);
 					filename = (String)method.invoke(c.newInstance(), filename);

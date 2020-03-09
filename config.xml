@@ -2,14 +2,14 @@
 <config name="config.xml">
   <phases>
     <phase>
-      <phase skip="false" type="java" path="" name="pp" />
-      <phase skip="false" type="java" path="" name="scanning" />
-      <phase skip="false" type="java" path="" name="parsing" />
-      <phase skip="false" type="java" path="" name="semantic" />
-      <phase skip="false" type="java" path="" name="icgen" />
-      <phase skip="false" type="java" path="" name="optimizing" />
-      <phase skip="false" type="java" path="" arch="mips" name="codegen" />
-      <phase skip="false" type="mips" headless="false" path="" name="simulating" />
+      <phase skip="false" type="java" path="" name="preprocess" />
+      <phase skip="false" type="java" path="bit.minisys.minicc.scanner.ExampleScanner" name="scan" />
+      <phase skip="false" type="java" path="bit.minisys.minicc.parser.ExampleParser" name="parse" />
+      <phase skip="true" type="java" path="" name="semantic" />
+      <phase skip="true" type="java" path="" name="icgen" />
+      <phase skip="true" type="java" path="" name="optimize" />
+      <phase skip="true" type="java" path="" name="ncgen" />
+      <phase skip="true" type="mips" path="" name="simulate" />
     </phase>
   </phases>
 </config>

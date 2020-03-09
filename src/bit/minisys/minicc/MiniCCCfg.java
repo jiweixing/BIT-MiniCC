@@ -6,12 +6,12 @@ public class MiniCCCfg {
 	public static String MINICC_PP_OUTPUT_EXT = ".pp.c";//删除无用注释和空格，宏替换与文件包含
 	// input and output for MiniCCScanner
 	public static String MINICC_SCANNER_INPUT_EXT = ".pp.c";//预处理过的C程序
-	public static String MINICC_SCANNER_OUTPUT_EXT = ".token.xml";//词法分析，生成属性字符流
+	public static String MINICC_SCANNER_OUTPUT_EXT = ".tokens";//词法分析，生成属性字符流
 	// input and output for MiniCCParser
-	public static String MINICC_PARSER_INPUT_EXT = ".token.xml";//词法分析后的属性字符流
-	public static String MINICC_PARSER_OUTPUT_EXT = ".tree.xml";//语法分析，生成语法树
+	public static String MINICC_PARSER_INPUT_EXT = ".tokens";//词法分析后的属性字符流
+	public static String MINICC_PARSER_OUTPUT_EXT = ".tree";//语法分析，生成语法树
 	// input and output for MiniCCSemantic
-	public static String MINICC_SEMANTIC_INPUT_EXT = ".tree.xml";//语法树
+	public static String MINICC_SEMANTIC_INPUT_EXT = ".tree";//语法树
 	public static String MINICC_SEMANTIC_OUTPUT_EXT = ".tree2.xml";//语义检查
 	// input and output for MiniCCICGen
 	public static String MINICC_ICGEN_INPUT_EXT = ".tree2.xml";//语法树
