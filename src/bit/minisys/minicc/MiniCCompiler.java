@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.StringWriter;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -121,6 +122,14 @@ public class MiniCCompiler {
 				}
 				filename = ppOutFile;
 			}
+		}else{
+			ArrayList<String> content = MiniCCUtil.readFile(cFile);
+			String ppOutFile = cFile.replace(MiniCCCfg.MINICC_PP_INPUT_EXT, MiniCCCfg.MINICC_PP_OUTPUT_EXT);
+			String src = "";
+			for(String s: content) {
+				src += s + "\n";
+			}
+			MiniCCUtil.createAndWriteFile(ppOutFile, src);
 		}
 		
 		// step 2: scan
