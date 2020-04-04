@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="lib/BITMiniCC_20200309_obf.jar"/>
+	<classpathentry kind="lib" path="lib/BITMiniCC_20200404_obf.jar"/>
 	<classpathentry kind="lib" path="lib/antlr-4.8-complete.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.10.2.jar"/>
