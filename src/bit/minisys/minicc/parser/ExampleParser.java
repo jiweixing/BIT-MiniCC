@@ -2,12 +2,15 @@ package bit.minisys.minicc.parser;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import org.antlr.v4.gui.TreeViewer;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bit.minisys.minicc.MiniCCCfg;
 import bit.minisys.minicc.internal.util.MiniCCUtil;
-import bit.minisys.minicc.standardAST.*;
+import bit.minisys.minicc.parser.standardAST.*;
 
 /*
  * PROGRAM     --> FUNC_LIST
@@ -57,22 +60,26 @@ public class ExampleParser implements IMiniCCParser {
 		tokenIndex = 0;
 
 		ASTNode root = program();
-//		TreeViewer viewer = new TreeViewer(root);
-//		viewer.open();
 		
-//		root.printTree(root);
-//		syntax2ast(root);
-//		System.out.println("--------------------------");
-//		root.printTree(root);
+		
+		String[] dummyStrs = new String[16];
+		TreeViewer viewr = new TreeViewer(Arrays.asList(dummyStrs), root);
+	    viewr.open();
 
 		ObjectMapper mapper = new ObjectMapper();
 		mapper.writeValue(new File(oFile), root);
 
-//		MiniCCUtil.createAndWriteFile(oFile, root.toString());
+		//TODO: write to file
+		
 		
 		return oFile;
 	}
 	
+	private void preVisualize(ASTNode n) {
+		if(n instanceof ASTProgram) {
+			
+		}
+	}
 	private ArrayList<ScannerToken> loadTokens(String tFile) {
 		tknList = new ArrayList<ScannerToken>();
 		
@@ -115,30 +122,6 @@ public class ExampleParser implements IMiniCCParser {
 		return null;
 	}
 
-	public void syntax2ast(ASTNode root){
-//		if(root.getType() == TreeNodeType.TN_TYPE_PROGRAM){
-//			if (root.getSubNodes().size() >= 1) {
-//				TreeNode fl = root.getSubByIndex(0);
-//				int i = 0;
-//				while (true){
-//					TreeNode f = fl.getSubByIndex(0);
-//					root.getSubNodes().add(i,f);
-//					if (fl.getSubNodes().size() >= 2){
-//						fl = fl.getSubByIndex(1);
-//					}else{
-//						break;
-//					}
-//				}
-//				root.getSubNodes().remove(root.getSubNodes().size()-1);
-//			}
-//		}else if (root.getType() == TreeNodeType.TN_TYPE_STMTS){
-//			//TODO
-//		}
-//		for (TreeNode n:root.getSubNodes()){
-//			syntax2ast(n);
-//		}
-	}
-
 	public void matchToken(String type) {
 		if(tokenIndex < tknList.size()) {
 			ScannerToken next = tknList.get(tokenIndex);
@@ -158,9 +141,9 @@ public class ExampleParser implements IMiniCCParser {
 		ArrayList<ASTNode> fl = funcList();
 		if(fl != null) {
 			//p.getSubNodes().add(fl);
-			p.funcList.addAll(fl);
+			p.items.addAll(fl);
 		}
-
+		p.children.addAll(p.items);
 		return p;
 	}
 
@@ -179,7 +162,6 @@ public class ExampleParser implements IMiniCCParser {
 			if(fl2 != null) {
 				fl.addAll(fl2);
 			}
-
 			return fl;
 		}
 	}
@@ -191,6 +173,7 @@ public class ExampleParser implements IMiniCCParser {
 		ASTToken s = type();
 		
 		fdef.specifiers.add(s);
+		fdef.children.add(s);
 		
 		ASTFunctionDeclarator fdec = new ASTFunctionDeclarator();
 
@@ -198,17 +181,25 @@ public class ExampleParser implements IMiniCCParser {
 		id.tokenId = tokenIndex;
 		matchToken("Identifier");
 
+		fdef.children.add(id);
+		
 		matchToken("'('");
 		ArrayList<ASTParamsDeclarator> pl = arguments();
 		matchToken("')'");
 		
-		fdec.identifiers.add(id);
-		if(pl != null) fdec.params.addAll(pl);
+		//fdec.identifiers.add(id);
+		if(pl != null) {
+			fdec.params.addAll(pl);
+			fdec.children.addAll(pl);
+		}
 		
 		ASTCompoundStatement cs = codeBlock();
 
 		fdef.declarator = fdec;
+		fdef.children.add(fdec);
 		fdef.body = cs;
+		fdef.children.add(cs);
+
 		
 		return fdef;
 	}
@@ -332,7 +323,6 @@ public class ExampleParser implements IMiniCCParser {
 		}else {
 			return term;
 		}
-
 	}
 
 	//EXPR' --> '+' TERM EXPR' | '-' TERM EXPR' | e
@@ -394,7 +384,6 @@ public class ExampleParser implements IMiniCCParser {
 				term.expr1 = be;
 				return term;
 			}
-			
 			return be;
 		}else {
 			return null;

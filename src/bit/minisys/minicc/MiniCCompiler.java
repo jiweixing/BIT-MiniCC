@@ -54,6 +54,7 @@ public class MiniCCompiler {
 				pp.type = temp.getAttribute("type");
 				pp.path = temp.getAttribute("path");
 				pp.skip = temp.getAttribute("skip");
+
 			}
 			else if(name.equals("scan")) {
 				scanning.type = temp.getAttribute("type");
@@ -163,7 +164,7 @@ public class MiniCCompiler {
 					filename = (String)method.invoke(c.newInstance(), filename);
 				}else{
 					MiniCCParser p = new MiniCCParser();
-					filename = p.run(filename);
+					filename = p.run(cFile);	// internal ANTLR parser uses .c as input, and output ast.json
 				}
 			}else {
 				String pOutFile = filename.replace(MiniCCCfg.MINICC_SCANNER_OUTPUT_EXT, MiniCCCfg.MINICC_PARSER_OUTPUT_EXT);
@@ -284,7 +285,7 @@ public class MiniCCompiler {
 	}
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
-		//Runtime rt = Runtime.getRuntime();//格式：exe名 输入文件 输出文件
+		//Runtime rt = Runtime.getRuntime();//鏍煎紡锛歟xe鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
 		ProcessBuilder pb = new ProcessBuilder(path, iFile, oFile);
 		
 		pb.redirectErrorStream(true);
@@ -300,7 +301,7 @@ public class MiniCCompiler {
 		return;
 	}
 	private void runPy(String iFile, String oFile, String path) throws IOException{
-		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本名 输入文件 输出文件
+		PythonInterpreter pyi = new PythonInterpreter();//鏍煎紡锛歅ython鑴氭湰鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
 		// DIRTY HACK! Apparently the retard who wrote this before don't know how to google.
 		pyi.exec("import sys\nsys.argv = ['<string>', \"" + MiniCCUtil.escape(iFile) + "\", \"" + MiniCCUtil.escape(oFile) + "\"]");
 		pyi.setOut(System.out);
