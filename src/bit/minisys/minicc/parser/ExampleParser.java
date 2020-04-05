@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bit.minisys.minicc.MiniCCCfg;
 import bit.minisys.minicc.internal.util.MiniCCUtil;
-import bit.minisys.minicc.parser.standardAST.*;
+import bit.minisys.minicc.parser.ast.*;
 
 /*
  * PROGRAM     --> FUNC_LIST
@@ -75,11 +75,7 @@ public class ExampleParser implements IMiniCCParser {
 		return oFile;
 	}
 	
-	private void preVisualize(ASTNode n) {
-		if(n instanceof ASTProgram) {
-			
-		}
-	}
+
 	private ArrayList<ScannerToken> loadTokens(String tFile) {
 		tknList = new ArrayList<ScannerToken>();
 		
@@ -137,7 +133,7 @@ public class ExampleParser implements IMiniCCParser {
 
 	//PROGRAM --> FUNC_LIST
 	public ASTNode program() {
-		ASTProgram p = new ASTProgram();
+		ASTCompilationUnit p = new ASTCompilationUnit();
 		ArrayList<ASTNode> fl = funcList();
 		if(fl != null) {
 			//p.getSubNodes().add(fl);

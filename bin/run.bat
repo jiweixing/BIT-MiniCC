@@ -1,1 +1,0 @@
-java -jar ..\lib\BITMiniCC-obf.jar %1%
