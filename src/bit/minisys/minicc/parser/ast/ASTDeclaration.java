@@ -23,8 +23,8 @@ public class ASTDeclaration extends ASTNode{
 	
 
 	public static class Builder {
-			private  LinkedList<ASTToken> specfiers;//=new LinkedList<Token>();
-			private  LinkedList<ASTInitList> initLists;// = new LinkedList<InitList>();
+			private  LinkedList<ASTToken> specfiers=new LinkedList<ASTToken>();
+			private  LinkedList<ASTInitList> initLists = new LinkedList<ASTInitList>();
 		
 	        public void addSpecfiers(Object node) {
 	        	if(specfiers == null) {

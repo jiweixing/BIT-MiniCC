@@ -23,7 +23,7 @@ public class ASTParamsDeclarator extends ASTNode{
 	}
 	
 	public static class Builder{
-		private List<ASTToken> specfiers;//=new LinkedList<Token>();
+		private List<ASTToken> specfiers=new LinkedList<ASTToken>();
 		private ASTDeclarator declarator;
 		
         public void addSpecfiers(Object node) {

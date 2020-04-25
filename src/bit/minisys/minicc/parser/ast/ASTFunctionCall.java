@@ -5,7 +5,6 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-// postfixExpression( ... ) �������ñ��ʽ
 @JsonTypeName("FunctionCall")
 public class ASTFunctionCall extends ASTExpression{
 
@@ -23,7 +22,7 @@ public class ASTFunctionCall extends ASTExpression{
 	
 	public static class Builder{
 		private ASTExpression name;
-		private List<ASTExpression> argList;//=new LinkedList<Expression>();
+		private List<ASTExpression> argList=new LinkedList<ASTExpression>();
 		
 		public void setName(ASTExpression name) {
 			this.name = name;

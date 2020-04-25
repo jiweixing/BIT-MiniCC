@@ -1,13 +1,13 @@
 package bit.minisys.minicc.parser.ast;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeName;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-//import bit.minisys.minicc.symbol.Type;
+import bit.minisys.minicc.internal.symbol.Type;
 
-// ���ʽ�� �ڵ�
 @JsonTypeName("Expression")
 @JsonTypeInfo(use = JsonTypeInfo.Id.NAME,include = As.PROPERTY,property = "type")
 @JsonSubTypes({
@@ -28,10 +28,10 @@ import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 })
 public abstract class ASTExpression extends ASTNode{
 
-	//@JsonIgnore
-	//public Type type;
-	//@JsonIgnore
-	//public Boolean canAssigned;
+	@JsonIgnore
+	public Type type;
+	@JsonIgnore
+	public Boolean canAssigned;
 
 	public ASTExpression(String type){
 		super(type);

@@ -25,7 +25,7 @@ public class ASTFunctionDeclarator extends ASTDeclarator{
 
 	public static class Builder{
 		private ASTDeclarator decl;
-		private List<ASTParamsDeclarator> params;//=new LinkedList<ParamsDeclarator>();
+		private List<ASTParamsDeclarator> params=new LinkedList<ASTParamsDeclarator>();
 
 		public void setDecl(ASTDeclarator decl) {
 			this.decl = decl;

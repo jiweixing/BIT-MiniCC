@@ -25,7 +25,7 @@ public class ASTFunctionDefine extends ASTNode{
 
 	
 	public static class Builder{
-		private LinkedList<ASTToken> specifiers;// = new LinkedList<Token>();
+		private LinkedList<ASTToken> specifiers = new LinkedList<ASTToken>();
 		private ASTDeclarator declarator;
 		private ASTCompoundStatement body;
 		

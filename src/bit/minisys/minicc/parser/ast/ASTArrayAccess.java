@@ -21,7 +21,7 @@ public class ASTArrayAccess extends ASTExpression{
 	
 	public static class Builder{
 		private ASTExpression arrayName;
-		private List<ASTExpression> elements;// = new LinkedList<Expression>();
+		private List<ASTExpression> elements = new LinkedList<ASTExpression>();
 			
 		public void setArrayName(ASTExpression arrayName) {
 			this.arrayName = arrayName;

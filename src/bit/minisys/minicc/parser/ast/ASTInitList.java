@@ -22,7 +22,7 @@ public class ASTInitList extends ASTNode{
 	
 	public static class Builder {
 		private ASTDeclarator declarator;
-		private List<ASTExpression> initialize;// = new LinkedList<Expression>();
+		private List<ASTExpression> initialize = new LinkedList<ASTExpression>();
 	
         public void setDeclarator(ASTDeclarator declarator) {
         	this.declarator = declarator;

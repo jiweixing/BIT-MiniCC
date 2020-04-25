@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonSubTypes;
 import com.fasterxml.jackson.annotation.JsonTypeInfo;
 import com.fasterxml.jackson.annotation.JsonTypeInfo.As;
 
-//import bit.minisys.minicc.symbol.SymbolTable;
+import bit.minisys.minicc.internal.symbol.SymbolTable;
 
 
 
@@ -45,8 +45,8 @@ public abstract class ASTNode implements Tree{
 	public ASTNode(String type) {
 		this.type = type;
 	}
-	//@JsonIgnore
-	//public SymbolTable scope;
+	@JsonIgnore
+	public SymbolTable scope;
 	
 	@JsonIgnore
 	public String getNodeText() {

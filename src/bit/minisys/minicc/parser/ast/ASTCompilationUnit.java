@@ -21,7 +21,7 @@ public class ASTCompilationUnit extends ASTNode{
 	}
 
 	public static class Builder{
-		public List<ASTNode> items ;//= new ArrayList<ASTNode>();
+		public List<ASTNode> items = new ArrayList<ASTNode>();
 		public void addNode(Object node){
 			if (items == null) {
 				items = new ArrayList<ASTNode>();
