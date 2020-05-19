@@ -45,9 +45,9 @@ class ScannerToken{
 
 public class ExampleParser implements IMiniCCParser {
 
-	private ArrayList<ScannerToken1> tknList;
+	private ArrayList<ScannerToken> tknList;
 	private int tokenIndex;
-	private ScannerToken1 nextToken;
+	private ScannerToken nextToken;
 	
 	@Override
 	public String run(String iFile) throws Exception {
@@ -76,8 +76,8 @@ public class ExampleParser implements IMiniCCParser {
 	}
 	
 
-	private ArrayList<ScannerToken1> loadTokens(String tFile) {
-		tknList = new ArrayList<ScannerToken1>();
+	private ArrayList<ScannerToken> loadTokens(String tFile) {
+		tknList = new ArrayList<ScannerToken>();
 		
 		ArrayList<String> tknStr = MiniCCUtil.readFile(tFile);
 		
@@ -86,7 +86,7 @@ public class ExampleParser implements IMiniCCParser {
 				continue;
 			}
 			
-			ScannerToken1 st = new ScannerToken1();
+			ScannerToken st = new ScannerToken();
 			//[@0,0:2='int',<'int'>,1:0]
 			String[] segs;
 			if(str.indexOf("<','>") > 0) {
@@ -111,7 +111,7 @@ public class ExampleParser implements IMiniCCParser {
 		return tknList;
 	}
 
-	private ScannerToken1 getToken(int index){
+	private ScannerToken getToken(int index){
 		if (index < tknList.size()){
 			return tknList.get(index);
 		}
@@ -120,7 +120,7 @@ public class ExampleParser implements IMiniCCParser {
 
 	public void matchToken(String type) {
 		if(tokenIndex < tknList.size()) {
-			ScannerToken1 next = tknList.get(tokenIndex);
+			ScannerToken next = tknList.get(tokenIndex);
 			if(!next.type.equals(type)) {
 				System.out.println("[ERROR]Parser: unmatched token, expected = " + type + ", " 
 						+ "input = " + next.type);
@@ -202,7 +202,7 @@ public class ExampleParser implements IMiniCCParser {
 
 	//TYPE --> INT |FLOAT | CHART
 	public ASTToken type() {
-		ScannerToken1 st = tknList.get(tokenIndex);
+		ScannerToken st = tknList.get(tokenIndex);
 		
 		ASTToken t = new ASTToken();
 		if(st.type.equals("'int'")) {
