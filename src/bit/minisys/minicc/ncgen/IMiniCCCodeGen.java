@@ -1,10 +1,6 @@
 package bit.minisys.minicc.ncgen;
 
-import java.io.IOException;
-
-import javax.xml.parsers.ParserConfigurationException;
-
-import org.xml.sax.SAXException;
+import bit.minisys.minicc.MiniCCCfg;
 
 public interface IMiniCCCodeGen {
 	/*
@@ -12,5 +8,6 @@ public interface IMiniCCCodeGen {
 	 * @param iFile input file path
 	 * @param type architecture
 	 */
-	public String run(String iFile, String type) throws Exception;
+
+	public String run(String iFile, MiniCCCfg cfg) throws Exception;
 }

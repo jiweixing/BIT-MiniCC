@@ -20,6 +20,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 import org.xml.sax.*;
 
+import bit.minisys.minicc.icgen.internal.IRBuilder;
 import bit.minisys.minicc.icgen.internal.MiniCCICGen;
 import bit.minisys.minicc.internal.util.MiniCCUtil;
 import bit.minisys.minicc.ncgen.internal.MiniCCCodeGen;
@@ -86,13 +87,12 @@ public class MiniCCompiler {
 				codegen.type = temp.getAttribute("type");
 				codegen.path = temp.getAttribute("path");
 				codegen.skip = temp.getAttribute("skip");
-				codegen.arch = temp.getAttribute("arch");
+				codegen.target = temp.getAttribute("target");
+				codegen.ra = temp.getAttribute("ra");
 			}
 			else if(name.equals("simulate")) {
-				simulating.type = temp.getAttribute("type");
-				simulating.path = temp.getAttribute("path");
-				simulating.skip = temp.getAttribute("skip");
-				simulating.headless = temp.getAttribute("headless");
+				//InterVars.goalAsm = temp.getAttribute("type");
+				//InterVars.level = temp.getAttribute("level");
 			}
 		}
 	}
@@ -249,10 +249,10 @@ public class MiniCCompiler {
 				if(!codegen.path.equals("")){
 					Class<?> c = Class.forName(codegen.path);
 					Method method = c.getMethod("run", String.class, String.class);
-					filename = (String)method.invoke(c.newInstance(), filename, codegen.arch);
+					filename = (String)method.invoke(c.newInstance(), filename, codegen.target);
 				}else{
 					MiniCCCodeGen g = new MiniCCCodeGen();
-					filename = g.run(filename, codegen.arch);
+					filename = g.run(filename, codegen);
 				}
 			}else {
 				String cOutFile = filename.replace(MiniCCCfg.MINICC_OPT_OUTPUT_EXT, MiniCCCfg.MINICC_CODEGEN_OUTPUT_EXT);
@@ -265,20 +265,14 @@ public class MiniCCompiler {
 			}
 		}
 		
-		// step 8: simulate
-		
-		if(simulating.skip.equals("false")){
-			IMiniCCSimulator m = null;
-			if(simulating.type.equals("riscv")) {
-				m = new RISCVSimulator();
-			} else {	
-				m = new MIPSSimulator();
-			}
-			
-			if(simulating.headless.equals("false")) {
-				m.run(null);
-			} else {
-				m.run(filename);
+		// step 8: simulation
+		if(codegen.skip.equals("false")){
+			if(codegen.target.equals("mips")){
+				MIPSSimulator ms = new MIPSSimulator();
+				ms.run(filename);
+			}else if(codegen.target.equals("riscv")) {
+				RISCVSimulator rs = new RISCVSimulator();
+				rs.run(filename);
 			}
 		}
 		

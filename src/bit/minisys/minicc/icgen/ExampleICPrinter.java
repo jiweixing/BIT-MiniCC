@@ -21,7 +21,7 @@ public class ExampleICPrinter {
 			String res = astStr(quat.getRes());
 			String opnd1 = astStr(quat.getOpnd1());
 			String opnd2 = astStr(quat.getOpnd2());
-			sb.append("("+op+","+res+","+opnd1+","+opnd2+")\n");
+			sb.append("("+op+","+ opnd1+","+opnd2 +"," + res+")\n");
 		}
 		// write
 		try {
