@@ -248,8 +248,8 @@ public class MiniCCompiler {
 			if(codegen.type.equals("java")){
 				if(!codegen.path.equals("")){
 					Class<?> c = Class.forName(codegen.path);
-					Method method = c.getMethod("run", String.class, String.class);
-					filename = (String)method.invoke(c.newInstance(), filename, codegen.target);
+					Method method = c.getMethod("run", String.class, MiniCCCfg.class);
+					filename = (String)method.invoke(c.newInstance(), filename, codegen);
 				}else{
 					MiniCCCodeGen g = new MiniCCCodeGen();
 					filename = g.run(filename, codegen);
