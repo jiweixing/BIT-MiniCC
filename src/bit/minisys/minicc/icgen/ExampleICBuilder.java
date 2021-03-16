@@ -6,12 +6,12 @@ import java.util.List;
 import java.util.Map;
 
 import bit.minisys.minicc.parser.ast.*;
-// Ò»¸ö¼òµ¥ÑùÀı£¬Ö»ÊµÏÖÁË¼Ó·¨
+// ä¸€ä¸ªç®€å•æ ·ä¾‹ï¼Œåªå®ç°äº†åŠ æ³•
 public class ExampleICBuilder implements ASTVisitor{
 
-	private Map<ASTNode, ASTNode> map;				// Ê¹ÓÃmap´æ´¢×Ó½ÚµãµÄ·µ»ØÖµ£¬key¶ÔÓ¦×Ó½Úµã£¬value¶ÔÓ¦·µ»ØÖµ£¬valueÄ¿Ç°Àà±ğ°üÀ¨ASTIdentifier,ASTIntegerConstant,TemportaryValue...
-	private List<Quat> quats;						// Éú³ÉµÄËÄÔªÊ½ÁĞ±í
-	private Integer tmpId;							// ÁÙÊ±±äÁ¿±àºÅ
+	private Map<ASTNode, ASTNode> map;				// ä½¿ç”¨mapå­˜å‚¨å­èŠ‚ç‚¹çš„è¿”å›å€¼ï¼Œkeyå¯¹åº”å­èŠ‚ç‚¹ï¼Œvalueå¯¹åº”è¿”å›å€¼ï¼Œvalueç›®å‰ç±»åˆ«åŒ…æ‹¬ASTIdentifier,ASTIntegerConstant,TemportaryValue...
+	private List<Quat> quats;						// ç”Ÿæˆçš„å››å…ƒå¼åˆ—è¡¨
+	private Integer tmpId;							// ä¸´æ—¶å˜é‡ç¼–å·
 	public ExampleICBuilder() {
 		map = new HashMap<ASTNode, ASTNode>();
 		quats = new LinkedList<Quat>();
@@ -73,11 +73,11 @@ public class ExampleICBuilder implements ASTVisitor{
 		ASTNode opnd2 = null;
 		
 		if (op.equals("=")) {
-			// ¸³Öµ²Ù×÷
-			// »ñÈ¡±»¸³ÖµµÄ¶ÔÏóres
+			// èµ‹å€¼æ“ä½œ
+			// è·å–è¢«èµ‹å€¼çš„å¯¹è±¡res
 			visit(binaryExpression.expr1);
 			res = map.get(binaryExpression.expr1);
-			// ÅĞ¶ÏÔ´²Ù×÷ÊıÀàĞÍ, ÎªÁË±ÜÃâ³öÏÖa = b + c; Éú³ÉÁ½¸öËÄÔªÊ½£ºtmp1 = b + c; a = tmp1;µÄÇé¿ö¡£Ò²¿ÉÒÔÓÃ±ğµÄ·½·¨½â¾ö
+			// åˆ¤æ–­æºæ“ä½œæ•°ç±»å‹, ä¸ºäº†é¿å…å‡ºç°a = b + c; ç”Ÿæˆä¸¤ä¸ªå››å…ƒå¼ï¼štmp1 = b + c; a = tmp1;çš„æƒ…å†µã€‚ä¹Ÿå¯ä»¥ç”¨åˆ«çš„æ–¹æ³•è§£å†³
 			if (binaryExpression.expr2 instanceof ASTIdentifier) {
 				opnd1 = binaryExpression.expr2;
 			}else if(binaryExpression.expr2 instanceof ASTIntegerConstant) {
@@ -94,7 +94,7 @@ public class ExampleICBuilder implements ASTVisitor{
 			}
 			
 		}else if (op.equals("+")) {
-			// ¼Ó·¨²Ù×÷£¬½á¹û´æ´¢µ½ÖĞ¼ä±äÁ¿
+			// åŠ æ³•æ“ä½œï¼Œç»“æœå­˜å‚¨åˆ°ä¸­é—´å˜é‡
 			res = new TemporaryValue(++tmpId);
 			visit(binaryExpression.expr1);
 			opnd1 = map.get(binaryExpression.expr1);

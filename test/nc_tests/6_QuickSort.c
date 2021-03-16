@@ -1,4 +1,4 @@
-int a[10] = {1,4,7,2,3,0,8,5,9,6};	// BitMINICC灏氭湭瀹炵幇鎸囬拡锛岄噰鐢ㄥ叏灞�鏁扮粍
+int a[10] = {1,4,7,2,3,0,8,5,9,6};	// BitMINICC尚未实现指针，采用全局数组
 void quick(int start,int end);
 int partion(int low,int high);
 void quickSort(int len){
