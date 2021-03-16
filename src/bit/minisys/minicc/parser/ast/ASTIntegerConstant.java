@@ -2,7 +2,6 @@ package bit.minisys.minicc.parser.ast;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-// ���ͳ���
 @JsonTypeName("IntegerConstant")
 public class ASTIntegerConstant extends ASTExpression{
 	public Integer value;

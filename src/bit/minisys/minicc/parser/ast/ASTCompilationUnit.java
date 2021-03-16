@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 @JsonTypeName("Program")
 public class ASTCompilationUnit extends ASTNode{
 	
-	public List<ASTNode> items; //  item ֻ����declaration �� functionDefine
+	public List<ASTNode> items; //  item declaration functionDefine
 	
 	
 	public ASTCompilationUnit() {

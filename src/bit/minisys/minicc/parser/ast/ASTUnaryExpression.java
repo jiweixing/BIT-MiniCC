@@ -2,7 +2,6 @@ package bit.minisys.minicc.parser.ast;
 
 import com.fasterxml.jackson.annotation.JsonTypeName;
 
-// һԪ���ʽ�ڵ�
 @JsonTypeName("UnaryExpression")
 public class ASTUnaryExpression extends ASTExpression{
 	public ASTToken op;
