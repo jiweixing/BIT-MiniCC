@@ -2,7 +2,7 @@ package bit.minisys.minicc.icgen;
 
 import bit.minisys.minicc.parser.ast.ASTNode;
 
-// 四元式形式的中间代码, 操作数和返回值的结构直接使用AST节点，也可以自定义IR节点
+// 鍥涘厓寮忓舰寮忕殑涓棿浠ｇ爜, 鎿嶄綔鏁板拰杩斿洖鍊肩殑缁撴瀯鐩存帴浣跨敤AST鑺傜偣锛屼篃鍙互鑷畾涔塈R鑺傜偣
 public class Quat {
 	private String op;	
 	private ASTNode res;
