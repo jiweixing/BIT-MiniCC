@@ -279,7 +279,7 @@ public class MiniCCompiler {
 	}
 	
 	private void run(String iFile, String oFile, String path) throws IOException{
-		//Runtime rt = Runtime.getRuntime();//鏍煎紡锛歟xe鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
+		//Runtime rt = Runtime.getRuntime();//格式：exe 输入文件 输出文件
 		ProcessBuilder pb = new ProcessBuilder(path, iFile, oFile);
 		
 		pb.redirectErrorStream(true);
@@ -295,7 +295,7 @@ public class MiniCCompiler {
 		return;
 	}
 	private void runPy(String iFile, String oFile, String path) throws IOException{
-		PythonInterpreter pyi = new PythonInterpreter();//鏍煎紡锛歅ython鑴氭湰鍚� 杈撳叆鏂囦欢 杈撳嚭鏂囦欢
+		PythonInterpreter pyi = new PythonInterpreter();//格式：Python脚本 输入文件 输出文件
 		// DIRTY HACK! Apparently the retard who wrote this before don't know how to google.
 		pyi.exec("import sys\nsys.argv = ['<string>', \"" + MiniCCUtil.escape(iFile) + "\", \"" + MiniCCUtil.escape(oFile) + "\"]");
 		pyi.setOut(System.out);
