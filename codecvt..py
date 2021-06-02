@@ -4,7 +4,9 @@ from encodings.utf_16_le import decode
 
 
 def get_original_content(path):
-    for encoding in ["UTF-8", "GBK", "UTF-16LE"]:
+    # Potential encoding set
+    PES = ["UTF-8", "GBK", "GB18030", "UTF-16LE", "UTF-16BE"]
+    for encoding in PES:
         try:
             f = open(path, "r", encoding=encoding)
             content = f.read()
@@ -17,32 +19,37 @@ def get_original_content(path):
     f = open(path, "rb")
     raw_content = f.read()
     new_content = ""
-    p1 = 2
 
-    SE = "UTF-16BE"  # Special encoding
-    while True:
-        p2 = raw_content.find(r"//".encode(SE), p1)
-        if p2 == -1:
-            break
-        p2 += 4
-        p3 = raw_content.find("\n".encode(SE), p2)
-        healthy_content = raw_content[p1:p2]
-        new_content += healthy_content.decode(SE)
-
-        sick_content = raw_content[p2:p3]
-        sick_content = sick_content.decode(SE, errors="ignore")
+    for SE in PES:  # Special encoding
         try:
-            sick_content.encode("ASCII")
+            p1 = 2
+            while True:
+                p2 = raw_content.find(r"//".encode(SE), p1)
+                if p2 == -1:
+                    break
+                p2 += 4
+                p3 = raw_content.find("\n".encode(SE), p2)
+                healthy_content = raw_content[p1:p2]
+                new_content += healthy_content.decode(SE)
+
+                sick_content = raw_content[p2:p3]
+                sick_content = sick_content.decode(SE, errors="ignore")
+                try:
+                    sick_content.encode("ASCII")
+                except:
+                    sick_content = sick_content.encode(
+                        "GB18030", errors="ignore")
+                    sick_content = sick_content.decode(
+                        "UTF-8", errors="ignore")
+                new_content += sick_content
+                assert p2 > p1
+                p1 = p3
+                p2 = None
+                p2 = None
+            new_content += raw_content[p1:].decode(encoding=SE)
+            return new_content
         except:
-            sick_content = sick_content.encode("GB18030", errors="ignore")
-            sick_content = sick_content.decode("UTF-8", errors="ignore")
-        new_content += sick_content
-        assert p2 > p1
-        p1 = p3
-        p2 = None
-        p2 = None
-    new_content += raw_content[p1:].decode(encoding=SE)
-    return new_content
+            pass
 
 
 for home, dirs, files in os.walk("src/bit/minisys/minicc"):
