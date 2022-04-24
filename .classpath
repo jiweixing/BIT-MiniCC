@@ -7,7 +7,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/BITMiniCC_20200404_obf.jar"/>
-	<classpathentry kind="lib" path="lib/antlr-4.8-complete.jar"/>
 	<classpathentry kind="lib" path="lib/dom4j-1.6.1.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-annotations-2.10.2.jar"/>
 	<classpathentry kind="lib" path="lib/jackson-core-2.10.2.jar"/>
@@ -17,5 +16,7 @@
 	<classpathentry kind="lib" path="lib/jython.jar"/>
 	<classpathentry kind="lib" path="lib/Mars4_5.jar"/>
 	<classpathentry kind="lib" path="lib/Rars.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-3.5.2-complete.jar"/>
+	<classpathentry kind="lib" path="lib/antlr-4.8-complete.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

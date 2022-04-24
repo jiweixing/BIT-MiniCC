@@ -1,0 +1,198 @@
+忽略了结果中的空行和注释。用例前每行第一句为问题及原因，第二句为解决方案。
+
+
+INCFILE被替换为"1_test_1.h"后不会获取其地址。修改了fileInclusion的行为，将获取地址推迟到树遍历时期，使用从Cpp.g移动的expandFilename函数。
+-----------------------------------------PASS-----------------------------------------
+1_conditional_and_source_file_inclusion.c:
+#define VERSION 1
+#if VERSION == 1
+	#define INCFILE  "1_test_1.h"
+#else
+    #define INCFILE  "1_test_N.h"
+#endif
+#include INCFILE
+expected:
+int test1;
+error:
+java.io.FileNotFoundException: 1_test_1.h (No such file or directory)
+fixed:
+int test1;
+
+
+hash_hash后的#会被识别为DIRECTIVE的开头。在Cpp.g的DIRECTIVE中使用LA将其识别为单独的符号SHARP，并使primarySource可以推导出SHARP。
+-----------------------------------------PASS-----------------------------------------
+2_The_##_operator.c:
+#define hash_hash # ## #
+#define mkstr(a) # a
+#define in_between(a) mkstr(a)
+#define join(c, d) in_between(c hash_hash d)
+char p[] = join(x, y);
+expected:
+char p[] = "x ## y";
+error:
+char p[] =    "x  y";
+fixed:
+char p[] = "x ## y";
+
+
+f(9)被替换后形成了新的语义，需要将替换后的整行进行getExpansion()。
+3_rescanning_and_further_replacement.c:
+#define f(a) a*g
+#define g(a) f(a)
+f(2)(9)
+expected:
+2*f(9)
+or:
+2*9*g
+error:
+2*g(9)
+
+
+无问题
+-----------------------------------------PASS-----------------------------------------
+4_scope_of_macro_definitions_1.c:
+#define TABSIZE 100
+int table[TABSIZE];
+#define max(a, b) ((a) > (b) ? (a) : (b))
+max(x++,y-z)
+expected:
+int table[100];
+((x++) > (y-z) ? (x++) : (y-z))
+passed:
+int table[100];
+((x++) > (y-z) ? (x++) : (y-z))
+
+
+f(a)的替换包含递归导致栈溢出。使用集合notExpand存储不展开的名称，并在primarySource id=IDENTIFIER和macroExpansion ^(EXPAND id=IDENTIFIER), ^(EXPAND id=IDENTIFIER	lst=macArgs[expand])中进行判断。
+无法处理q()和str()函数宏调用未传入参数的情况。在CppTree中的macroExpansion ^(EXPAND id=IDENTIFIER)内添加。
+t(g)(0) -> g(0) -> f(0) 等情况产生了新的语义。
+5_scope_of_macro_definitions_2.c:
+#define x		3
+#define f(a)	f(x * (a))
+#undef  x
+#define x		2
+#define g		f
+#define z		z[0]
+#define h		g(~
+#define m(a)	a(w)
+#define w		0,1
+#define t(a)	a
+#define p()		int
+#define q(x)	x
+#define r(x,y)	x ## y
+#define str(x)	# x
+f(y+1) + f(f(z)) % t(t(g)(0) + t)(1);
+g(x+(3,4)-w) | h 5) & m
+      (f)^m(m);
+p() i[q()] = { q(1), r(2,3), r(4,), r(,5), r(,) };
+char c[2][6] = { str(hello), str() };
+expected:
+f(2 * (y+1)) + f(2 * (f(2 * (z[0])))) % f(2 * (0)) + t(1);
+f(2 * (2+(3,4)-0,1)) | f(2 * (~ 5)) & f(2 * (0,1))^m(0,1);
+int i[] = { 1, 23, 4, 5,  };
+char c[2][6] = { "hello", "" };
+error:
+java.lang.StackOverflowError
+halffixed:
+f(2 * (y+1)) + f(2 * (f(2 * (z[0])))) % f(0) + t(1);
+f(2+(3,4)-0,1) | f(~) 5) & m
+      (f)^Function Macro Call Not Defined:a
+a(0,1);
+int i[] = { 1, 23, 4, 5,  };
+char c[2][6] = { "hello", "" };
+
+
+: @\n包含特殊符号，无法被Lexer识别为IDENTIFYER。将@和\符号加入COPERATOR（可能导致不正确的行为？）。
+#include无法识别函数型宏调用，因为DIRECTIVE将#include后的IDENTIFYER识别为INCLUDE_EXPAND，在树遍历阶段进行展开，但CppTree.g的fileInclusion中并未定义函数型宏调用的情况。修改了#include的识别方式。
+LOW的替换包含递归导致栈溢出。同5。
+工具自底向上进行宏替换：glue(HIGH, LOW); -> glue(HIGH, LOW ", world"); -> HIGHLOW ", world";新形成的token HIGHLOW。
+6_scope_of_macro_definitions_3.c:
+#define str(s) #s
+#define xstr(s) str(s)
+#define debug(s, t) printf("x" # s "= %d, x" # t "= %s", \
+                           x ## s, x ## t)
+#define INCFILE(n)  vers ## n
+#define glue(a, b)  a ## b
+#define xglue(a, b) glue(a, b)
+#define HIGHLOW     "hello"
+#define LOW         LOW ", world"
+debug(1, 2);
+fputs(str(strncmp("abc\0d", "abc", '\4') // this goes away
+      == 0) str(: @\n), s);
+#include xstr(INCFILE(2).h)
+glue(HIGH, LOW);
+xglue(HIGH, LOW)
+expected:
+printf("x" "1" "= %d, x" "2" "= %s", x1, x2);
+      fputs(
+        "strncmp(\"abc\\0d\", \"abc\", '\\4') == 0" ": @\n",
+s);
+#include "vers2.h"
+"hello";
+"hello" ", world"
+or:
+printf("x1= %d, x2= %s", x1, x2);
+      fputs(
+        "strncmp(\"abc\\0d\", \"abc\", '\\4') == 0: @\n",
+s);
+#include "vers2.h"
+"hello";
+"hello, world"
+error:
+ printf("x" "1" "= %d, x" "2" "= %s",x1,x2);
+fputs( "strncmp("abc\0d","abc",'\4')
+      == 0"  ": n",s);
+line 1:0 required (...)+ loop did not match anything at input '<EOF>'
+CppTree.g: node from line 0:0 required (...)+ loop did not match anything at input ''
+halffixed:
+printf("x" "1" "= %d, x" "2" "= %s",x1,x2);
+fputs("strncmp("abc\0d","abc",'\4')
+      == 0" ": @\n",s);
+java.io.FileNotFoundException: vers2.h (No such file or directory)
+HIGHLOW ", world";
+HIGHLOW ", world"
+
+
+使用##连接会将空参数变为空格。在CppTree.g的concatenate中检查并避免。
+-----------------------------------------PASS-----------------------------------------
+7_scope_of_macro_definitions_4.c:
+#define t(x,y,z) x ## y ## z
+int j[] = { t(1,2,3), t(,4,5), t(6,,7), t(8,9,),
+            t(10,,), t(,11,), t(,,12), t(,,) };
+expected:
+int j[] = { 123, 45, 67, 89,
+            10, 11, 12,  };
+error:
+int j[] = {  123,   45,  6 7,  89 ,
+             10  ,   11 ,    12,      };
+fixed:
+int j[] = { 123, 45, 67, 89,
+            10, 11, 12,  };
+
+
+无问题
+-----------------------------------------PASS-----------------------------------------
+8_scope_of_macro_definitions_5.c:
+#define debug(...) fprintf(stderr, __VA_ARGS__)
+#define showlist(...) puts(#__VA_ARGS__)
+#define report(test, ...) ((test)?puts(#test):\
+               printf(__VA_ARGS__))
+debug("Flag");
+debug("X = %d\n", x);
+showlist(The first, second, and third items.);
+report(x>y, "x is %d but y is %d", x, y);
+expected:
+fprintf(stderr,  "Flag" );
+fprintf(stderr,  "X = %d\n", x );
+puts( "The first, second, and third items." );
+((x>y)?puts("x>y"):
+            printf("x is %d but y is %d", x, y));
+get:
+ fprintf(stderr,"Flag");
+ fprintf(stderr,"X = %d\n",x);
+ puts("The first,second,and third items.");
+ ((x>y)?puts("x>y"):               printf("x is %d but y is %d",x,y));
+
+
+缺少预定义宏。目前在CppTree.g的preprocess @init中定义了__DATE__,__TIME__,__FILE__。
+9_predefined_macro_names.c
