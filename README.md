@@ -12,10 +12,11 @@ BIT Mini C Compiler is a C compiler framework in Java for teaching.
 3. run as Java applications from class BitMiniCC
 
 # Supported targets
-1. x86
-2. MIPS
-3. RISC-V
-4. ARM (coming soon)
+1. ARM 
+2. x86
+3. MIPS
+4. RISC-V
+
 
 # Lab. projects
 1. Lexical Analysis: input(C code), output(tokens in JSON)
