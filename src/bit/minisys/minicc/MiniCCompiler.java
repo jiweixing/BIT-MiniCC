@@ -131,6 +131,7 @@ public class MiniCCompiler {
 				src += s + "\n";
 			}
 			MiniCCUtil.createAndWriteFile(ppOutFile, src);
+			filename = ppOutFile;
 		}
 		
 		// step 2: scan
