@@ -5,7 +5,6 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 //import bit.minisys.minicc.symbol.Symbol;
 
-// ��ʶ��
 @JsonTypeName("Identifier")
 public class ASTIdentifier extends ASTExpression{
 	public  String value;

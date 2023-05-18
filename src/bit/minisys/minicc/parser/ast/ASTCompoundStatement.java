@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonTypeName;
 
 @JsonTypeName("CompoundStatement")
 public class ASTCompoundStatement extends ASTStatement{
-	public  List<ASTNode> blockItems; // ����ֻ���� ���� ���� �������
+	public  List<ASTNode> blockItems;
 	
 	public ASTCompoundStatement() {
 		super("CompoundStatement");

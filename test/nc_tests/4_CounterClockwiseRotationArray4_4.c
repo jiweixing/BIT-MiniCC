@@ -6,9 +6,9 @@ void array4_4(){
 		for(j = 0; j < 4; j++)
 		{
 			A[i][j] = Mars_GetInt();
-			B[3-j][i] = A[i][j];   		  //鏃嬭浆90搴﹁祴鍊�
+			B[3-j][i] = A[i][j];   		  //旋转90度赋值
 		}
-	Mars_PrintStr("Array A:\n");          //杈撳嚭鐭╅樀A
+	Mars_PrintStr("Array A:\n");          //输出矩阵A
 	for( i = 0; i < 4; i++)
 	{
 		for(j = 0 ; j < 4; j++)
@@ -17,7 +17,7 @@ void array4_4(){
 		}
 		Mars_PrintStr("\n");
 	}
-	Mars_PrintStr("Array B:\n");          //杈撳嚭鐭╅樀B
+	Mars_PrintStr("Array B:\n");          //输出矩阵B
 	for( i = 0; i < 4; i++)
 	{
 		for(j = 0 ; j < 4; j++)
